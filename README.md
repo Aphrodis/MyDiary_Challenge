@@ -10,7 +10,7 @@ The UI templates can be accessed at: https://aphrodis.github.io/MyDiary_Challeng
 
 ## Set up
 
-You can clone this repository by using: git clone https://github.com/Aphrodis/MyDiary_Challenge.git
+You can clone this repository by using: *git clone https://github.com/Aphrodis/MyDiary_Challenge.git*
 
 ## Technologies Used
 
