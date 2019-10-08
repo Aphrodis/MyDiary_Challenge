@@ -3,18 +3,18 @@ function validateForm( doneMessage, event) {
 	const target = event.target || event.srcElement;
 	const req = document.getElementsByTagName('form');
 	const values = req;
-    if ( checkValues(values) === true) {
-		document.querySelector('.display_message').textContent = doneMessage;
-    }
-    return checkValues(values);
+  if ( checkValues(values) === true) {
+  document.querySelector('.display_message').textContent = doneMessage;
+  }
+  return checkValues(values);
 }
 function checkValues(values){
-   for(let i=0;i<values.length;i++){
-       if(values[i].value === "") {
-           return false;
-       }
-   }
-   return true;
+  for(let i=0;i<values.length;i++){
+    if(values[i].value === "") {
+      return false;
+    }
+  }
+  return true;
 }
 
 function editEntry() {
