@@ -1,115 +1,115 @@
 /*css for the content*/
 #mydashboard {
-    padding-top: 30px;
-    height: 90vh;
+  padding-top: 30px;
+  height: 90vh;
+}
+#mydashboard #on-left .createAndViewBtns>a {
+  padding-top: 24px;
+  padding-bottom: 20px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: none;
+  background-color: #052F60;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+}
+.createAndViewBtns{
+  padding: 17px;
+}
+#mydashboard #on-left {
+  line-height: 23px;
+  font-weight: 300;
+  font-size: 1em;
+  text-align: justify;
+  padding: 20px;
+}
+#mydashboard #on-right #carousel {
+position: relative;
+height: 380px;
+width: 615px;
+margin: auto;
+border: 2px solid #f0f2f0;
+}
+#mydashboard #on-right #carousel .slideshow .diary-content {
+position: absolute;
+z-index: 90;
+margin: auto;
+left: 10%;
+right: 10%;
+top: 30%;
+}
+#mydashboard #on-right #carousel .slideshow .diary-content h1 {
+    font-weight: 700;
+    font-size: 40px;
+}
+#mydashboard #on-right #carousel .slideshow img {
+opacity: 1;
+-webkit-filter: grayscale(0%) brightness(70%) blur(0px);
+        filter: grayscale(0%) brightness(70%) blur(0px);
+height: 100%;
+position: absolute;
+width: 100%;
+}
+
+/* Global css */  
+  .container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
   }
-  #mydashboard #on-left .createAndViewBtns>a {
-    padding-top: 24px;
-    padding-bottom: 20px;
-    padding-right: 10px;
-    padding-left: 10px;
-    border: none;
-    background-color: #052F60;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
+  .align-text {
+    text-align: center;
   }
-  .createAndViewBtns{
-    padding: 17px;
+  .recent-entries, .all-entries {
+    list-style: none;
+    padding-left: 0px;
   }
-  #mydashboard #on-left {
-    line-height: 23px;
-    font-weight: 300;
-    font-size: 1em;
-    text-align: justify;
-    padding: 20px;
+  /*grid css */
+  .grid-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
   }
-  #mydashboard #on-right #carousel {
-  position: relative;
-  height: 380px;
-  width: 615px;
-  margin: auto;
-  border: 2px solid #f0f2f0;
-  }
-  #mydashboard #on-right #carousel .slideshow .diary-content {
-  position: absolute;
-  z-index: 90;
-  margin: auto;
-  left: 10%;
-  right: 10%;
-  top: 30%;
-  }
-  #mydashboard #on-right #carousel .slideshow .diary-content h1 {
-      font-weight: 700;
-      font-size: 40px;
-  }
-  #mydashboard #on-right #carousel .slideshow img {
-  opacity: 1;
-  -webkit-filter: grayscale(0%) brightness(70%) blur(0px);
-          filter: grayscale(0%) brightness(70%) blur(0px);
-  height: 100%;
-  position: absolute;
-  width: 100%;
-  }
-  
-  /* Global css */  
-    .container {
-      width: 80%;
-      margin: auto;
-      overflow: hidden;
-    }
-   .align-text {
-      text-align: center;
-    }
-    .recent-entries, .all-entries {
-      list-style: none;
-      padding-left: 0px;
-    }
-    /*grid css */
-    .grid-container {
-      display: -webkit-box;
-      display: -ms-flexbox;
-      display: flex;
-      -webkit-box-orient: horizontal;
-      -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-      flex-direction: row;
-      -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-    }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  .sidebar {
-      padding: 10px;
-      margin-top: 10px;
-      background:	rgb(188, 209, 209);
-  }
-  .sidebar ul {
+
+a {
+  text-decoration: none;
+}
+
+.sidebar {
     padding: 10px;
-    border-radius: 10px;
-  }
-  .sidebar ul li {
-    margin-bottom: 10px;
-  }
-  .sidebar ul li a {
-    display: block;
-    padding: 1px 10px 5px 10px;
-    border-radius: 10px;
-  }
-  .sidebar ul li a .entry-title {
-    color: #D2691E;
-    margin-bottom: 3px;
-    margin-top: 7px;
-  }
-  .sidebar ul li a .entry-title:hover {
-    color: #00008B;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-  }
-  .sidebar ul li a:hover {
-    -webkit-transition: 1s;
-    transition: 1s;
-  }
+    margin-top: 10px;
+    background:	rgb(188, 209, 209);
+}
+.sidebar ul {
+  padding: 10px;
+  border-radius: 10px;
+}
+.sidebar ul li {
+  margin-bottom: 10px;
+}
+.sidebar ul li a {
+  display: block;
+  padding: 1px 10px 5px 10px;
+  border-radius: 10px;
+}
+.sidebar ul li a .entry-title {
+  color: #D2691E;
+  margin-bottom: 3px;
+  margin-top: 7px;
+}
+.sidebar ul li a .entry-title:hover {
+  color: #00008B;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+.sidebar ul li a:hover {
+  -webkit-transition: 1s;
+  transition: 1s;
+}
