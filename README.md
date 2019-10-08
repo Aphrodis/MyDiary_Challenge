@@ -6,11 +6,11 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 
 ## UI templates
 
-The UI templates can be accessed at: https://aphrodis.github.io/MyDiary_Challenge/UI/ 
+The UI templates can be accessed at: *https://aphrodis.github.io/MyDiary_Challenge/UI/*
 
 ## Set up
 
-You can clone this repository by using: *git clone https://github.com/Aphrodis/MyDiary_Challenge.git*
+You can clone this repository by using: ```git clone https://github.com/Aphrodis/MyDiary_Challenge.git```
 
 ## Technologies Used
 
