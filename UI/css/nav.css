@@ -5,7 +5,6 @@ body{
     font-size: 20px;
     height: 100%; 
 }
-
 /*CSS for the header*/
 header{
     background-color: black;
@@ -88,6 +87,7 @@ header ul li:hover{
     margin-inline-end: 0px;
     font-weight: bold;
 }
+
 footer{
     top: 4px;
     color: #ffffff;
