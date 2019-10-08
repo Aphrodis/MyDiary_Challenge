@@ -1,0 +1,87 @@
+.container {
+    width: 80%;
+    margin: auto;
+}
+.addentry-container{
+    height: 88vh;;
+    width: 95%;
+    /* margin: 2vh 2.5%; */
+    position: relative;
+}
+div.entry-wrapper {
+    width: 50%;
+    height: 86%;
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    background: rgba(48, 48, 48, 0.65);
+    border-radius: 3px;
+    overflow: auto;
+}
+div.entry-wrapper::-webkit-scrollbar{
+    background: rgba(0, 0, 0, .2);
+    width: 15px;
+}
+div.entry-wrapper::-webkit-scrollbar-thumb{
+    background-color: #333;
+}
+div.header{
+    overflow: hidden;
+}
+div.header h2{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 30px;
+    text-align: center;
+    width: 100%;
+    float: left;
+    padding: 20px;
+    color: #fff;
+}
+div.forms-wrapper{
+    width: 80%;
+    /* margin: 1% auto; */
+}
+#new-entry-content{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 15px;
+    min-width: 300px;
+    width: 100%;
+    transition: all .5s;
+    margin: 10px 0 10px 80px;
+    padding-top: 15px;
+    display: block;
+    height: 12em;
+    border-radius: 2px;
+    border: .5px solid #EEE;
+    outline: none;
+}
+div.forms-wrapper input[type="text"] {
+    width: 99%;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    display: block;
+    transition: all 0.5s;
+    animation: fade 0.5s;
+    outline: none;
+    border: 0.5px solid #FFF;
+    border-radius: 2px;
+    padding: 10px 5px;
+    margin: 10px 0 10px 80px;
+}
+.grid-container > div {
+    /* margin: auto; */
+    margin-left: 20%;
+}
+.myForm {
+    margin: auto;
+    text-align: center;
+}
+#entry-add-btn {
+    padding: 13px;
+    font-size: 15px;
+    background-color: #292727;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: bold;
+    color: white;
+    border: none;
+}

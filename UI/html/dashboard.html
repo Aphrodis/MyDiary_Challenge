@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <title>Diary Entries</title>
+</head>
+<body> 
+    <header id="header">
+        <div class="my-container">
+            <div id="logo">
+                <h1>My<span class="firstname">Personal</span>Diary</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="/UI/index.html">Home</a></li>
+                    <li><a href="../html/signup.html">Sign Up</a></li>
+                    <li><a href="../html/signin.html">Sign In</a></li>
+                    <li class="index"><a href="#">Dashboard</a></li>
+                    <li><a href="../html/profile.html">My Profile</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="main container">
+            <section id="mydashboard">
+                <div class="grid-container">
+                    <div id="on-left">
+                        <div class="align-text">
+                            <div class="createAndViewBtns">
+                            <a href="../html/newentry.html">Create A New Entry</a>
+                            <a href="../html/allentries.html">View All Entries</a>
+                            </div><br>
+                            <aside class="sidebar">
+                                <h4 class="align-text">My Recent Entries</h4>
+                                <hr/>
+                                <ul class="recent-entries">
+                                    <li>
+                                        <a href="../html/fullentry.html"><h4 class="entry-title">Andela Developer Challenge</h4></a>
+                                    </li>
+                                    <li>
+                                        <a href="../html/fullentry.html"><h4 class="entry-title">The hardest day ever</h4></a>
+                                    </li>
+                                    <li>
+                                        <a href="../html/fullentry.html"><h4 class="entry-title">My plan for today</h4></a>
+                                    </li>
+                                    <li>
+                                        <a href="../html/fullentry.html"><h4 class="entry-title">Lorem Ipsum?</h4></a>
+                                    </li>
+                                </ul>
+                            </aside>
+                        </div>
+                    </div>
+                    <div id="on-right">
+                        <h2 class="align-text" id="welcome-title">Welcome To Your Daily Journal</h2>
+                        <div id="carousel">
+                            <div class="image-container slideshow">
+                                <div class="diary-content ">
+                                    <h1 class="align-text">Write down your thoughts and feelings</h1>
+                                    <p class="align-text"></p>
+                                </div>
+                                <img src="../images/image1.jpg" alt="Journal Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>MyPersonalDiary Copyright &copy; 2019</footer>    
+    <script src="../js/entries.js"></script>
+</body>
+</html>

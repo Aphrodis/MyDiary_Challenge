@@ -1,0 +1,39 @@
+.content-container {
+    width: 900px;
+    background-image: url(../images/pen.webp);
+    height: 500px;
+    background-repeat: no-repeat;
+    color: whitesmoke;
+    margin-top: 13px;
+    text-align: center;
+    margin-left: 200px;
+    padding-top: 40px;
+  }
+  .content-container h1{
+    font-size: 50px;
+    padding-bottom: 26px;
+  }
+  .content-container h3{
+    font-size: 30px;
+    margin-left: 100px;
+    margin-right: 100px;
+  }
+  .content-container p{
+      font-size: 30px;
+      padding: 0 100px 0 100px;
+      justify-content: center;
+    }
+  #getStarted {
+    padding: 13px;
+    background-color: rgb(92, 124, 124);
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    text-decoration: none;
+    color: white;
+  }
+  #getStarted:hover{
+    background-color: #1c678a;
+    color: white;
+  }
+  

@@ -1,0 +1,86 @@
+.diaries-title {
+    text-align: center;
+    font-size: 30px;
+    font-weight: bold;
+}
+.container {
+    width: 98%;
+    margin: auto;
+    overflow: hidden;
+  }
+.entries-list {
+  height: 300px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  color: #000000;
+  float: left;
+  font-size: 17px;
+  line-height: 1.6em;
+  margin: 10px 1%;
+  max-width: 300px;
+  min-width: 250px;
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  width: 100%;
+  background-color: #9CB3C4;
+}
+.entries-list * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-transition: all 0.25s ease;
+    transition: all 0.25s ease;
+  }
+
+  .entries-list .full-entry {
+    padding: 5px 5px 0px 5px;
+    position: relative;
+    bottom: 0;
+    z-index: 1;
+  }
+  .full-entry .entry-content {
+    margin: 10px;
+    padding: 0;
+  }
+  .full-entry .entry-title {
+    font-weight: 800;
+    letter-spacing: -0.4px;
+  }
+  .read-entry {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    color: #fefefe;
+    align-items: center;
+    background-color: #6b756b;
+    display: flex;
+    font-size: 25px;
+    justify-content: center;
+    opacity: 0;
+    font-weight: bold;
+  }
+  .entry-link {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    z-index: 1;
+  }
+  .entry-title {
+    text-align: center;
+  }
+  .entries-list:hover .read-entry {
+    -webkit-transition-delay: 0.1s;
+    transition-delay: 0.1s;
+    opacity: 1;
+  }
+  .entries-list:hover .full-entry {
+    opacity: 0;
+  }
+  .link {
+    text-decoration: none;
+    color: #ffffff;
+  }
+  
