@@ -23,6 +23,6 @@ function editEntry() {
   if ( none_empty === true) {
 
   }
-  setTimeout(() => {window.location.href = '../html/allentries.html';}, 1000);
+  setTimeout(() => {window.location.href = './allentries.html';}, 1000);
 }
 

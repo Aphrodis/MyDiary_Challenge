@@ -3,7 +3,7 @@ const signupForm = document.querySelector('.signup-form');
 const processSubmit = (e) => {
 	e.preventDefault();
 	// const button = document.querySelector('.signupBtn');
-	setTimeout(() => {window.location.href = '../html/dashboard.html';}, 1000);
+	setTimeout(() => {window.location.href = './dashboard.html';}, 1000);
 };
 
 
