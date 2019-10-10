@@ -11,7 +11,7 @@
 <body> 
 
     <header id="header">
-        <div class="my-container">
+        <div class=" container my-container">
             <div id="logo">
                 <h1>My<span class="firstname">Personal</span>Diary</h1>
             </div>
@@ -31,14 +31,15 @@
         <div class="main container">
             <section id="mydashboard">
                 <div class="grid-container">
-                    <div id="on-left">
+                    <div class="col-2-6 col-6-6-md col-6-6-xs" id="on-left">
                         <div class="align-text">
                             <div class="createAndViewBtns">
-                                <a href="../html/newentry.html">Create A New Entry</a>
-                                <a href="../html/allentries.html">View All Entries</a>
-                            </div><br>
+                                <button><a href="../html/newentry.html">Create A New Entry</a></button>
+                                <button><a href="../html/allentries.html">View All Entries</a></button>
+                            </div>
+                            <!-- <br> -->
                             <aside class="sidebar">
-                                <h4 class="align-text">My Recent Entries</h4>
+                                <h4>My Recent Entries</h4>
                                 <hr/>
                                 <ul class="recent-entries">
                                     <li>
@@ -57,15 +58,15 @@
                             </aside>
                         </div>
                     </div>
-                    <div id="on-right">
+                    <div class="col-4-6 col-6-6-md col-6-6-xs" id="on-right">
                         <h2 class="align-text" id="welcome-title">Welcome To Your Daily Journal</h2>
                         <div id="carousel">
                             <div class="image-container slideshow">
-                                <div class="diary-content ">
+                                <div class="diary-content">
                                     <h1 class="align-text">Write down your thoughts and feelings</h1>
                                     <p class="align-text"></p>
                                 </div>
-                                <img src="../images/image1.jpg" alt="Journal Image">
+                                <img src="../images/pendown.jpeg" alt="Journal Image">
                             </div>
                         </div>
                     </div>

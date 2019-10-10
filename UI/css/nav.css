@@ -6,6 +6,15 @@ body{
     height: 100%; 
 }
 /*CSS for the header*/
+/* nav {
+    display: none;
+}
+@media (min-width: 768px) {
+    nav {
+        display: none;
+    }
+} */
+
 header{
     background-color: black;
     color: white;
@@ -49,7 +58,9 @@ header nav{
 header .firstname, header .index a{
     color: tomato;
     font-weight: bold;
+    /* background-color: yellow; */
 }
+
 header a:hover{
     color: #000000;
     font-weight: bold;
@@ -87,6 +98,46 @@ header ul li:hover{
     margin-inline-end: 0px;
     font-weight: bold;
 }
+@media (min-width: 320px) and (max-width: 599px){
+    header nav {
+        /* float: right;
+        margin-top: 10px;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold; */
+        display: none;
+        width: 100%;
+        font-size: 2em;
+    }
+}
+@media (max-width: 900px) and (min-width: 600px){
+    #logo {
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 1024px) {
+    /* header {
+      height: 120px;
+    } */
+    header nav, #logo {
+      margin-top: 5px;
+      padding-bottom: 10px;
+      width: 100% !important;
+      text-align: center;
+    }
+
+
+    /* #logo {
+    margin-top: 5px;
+      padding-bottom: 10px;
+      width: 100% !important;
+      text-align: center;
+    } */
+  }
+
+
+
+
 
 footer{
     top: 4px;
