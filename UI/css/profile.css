@@ -1,3 +1,9 @@
+.container {
+  width: 50%;
+  margin: 0px auto;
+  background-color: green;
+}
+
 .diary-reminder {
   margin: 1.5em auto 0 auto;
   background: #363457;
