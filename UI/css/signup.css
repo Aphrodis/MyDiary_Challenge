@@ -40,7 +40,8 @@ h1{
     outline: none;
 }
 .signupBtn {
-    color: blue;
+    color: white;
+    background-color: rgb(5, 26, 49);
     font-size: 16px;
     font-weight: bold;
     padding: 10px;
@@ -54,7 +55,7 @@ h1{
     margin-left: 35%;
 }
 .signupBtn:hover{
-    background: rgb(194, 72, 72);
+    background: black;
     color: white;
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;

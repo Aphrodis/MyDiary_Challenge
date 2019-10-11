@@ -1,58 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../css/modifyentry.css">
-    <link rel="stylesheet" href="../css/nav.css">
-    <title>Modify Entry|My Personal Diary</title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="../css/modifyentry.css">
+        <link rel="stylesheet" href="../css/nav.css">
+        <title>Update Entry|MyDiary</title>
+    </head>
+    <body>
 
-    <header id="header">
-        <div class="my-container">
-            <div id="logo">
-                <h1>My<span class="firstname">Personal</span>Diary</h1>
+        <header id="header">
+            <div class="my-container">
+                <div id="logo">
+                    <h1>My<span class="firstname">Personal</span>Diary</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="../html/signup.html">Sign Up</a></li>
+                        <li><a href="../html/signin.html">Sign In</a></li>
+                        <li><a href="../html/dashboard.html">Dashboard</a></li>
+                        <li><a href="../html/profile.html">My Profile</a></li>
+                        <li><a href="../html/signin.html">Log out</a></li>
+                    </ul>
+                </nav>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../html/signup.html">Sign Up</a></li>
-                    <li><a href="../html/signin.html">Sign In</a></li>
-                    <li><a href="../html/dashboard.html">Dashboard</a></li>
-                    <li><a href="../html/profile.html">My Profile</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="main container">
-            <div class="grid-container">
-                <div class="addentry-container">
-                        <div class="entry-wrapper">
-                            <div class="header">
-                                <h2>Modify Entry</h2>
-                            </div>
-                            <div class="forms-wrapper">
-                                <form class="myForm js-form-update" id="formData">
-                                    <p class="display_message"></p>
-                                    <input type="text" id="new-entry-title" placeholder="Enter the title" value="My Plan for Today" required/>
-                                    <textarea id="new-entry-content" placeholder="New Entry" required>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</textarea>
-                                    <div class="entry-options-container"></div>
-                                    <button type="submit" id="updateBtn" onclick="editEntry()">Update Entry</button>
-                                </form>
-                            </div>
+        </header>
+        <main>
+            <div class="main container">
+                <div class="grid-container">
+                    <div class="col-4-6 col-6-6-xs col-6-6-md">
+                        <div class="entry-wrapper align-text">
+                            <form class="myForm js-form-newEntry">
+                                <h3 class="entry-heading align-text">Modify Diary Entry</h3>
+                                <p class="display_message"></p>
+                                <div class="formData grid-container">
+                                    <div class="col-4-6 col-6-6-md col-6-6-xs">
+                                        <input type="text" class="input-field" id="entry-title" placeholder="Enter the Title" value="My Plan for Today" required/>
+                                    </div>
+                                </div>
+                                <div class="formData grid-container">
+                                    <div class="col-4-6 col-6-6-md col-6-6-xs">
+                                        <textarea class="input-field" id="entry-content" placeholder="Enter the Entry Content" required>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.</textarea>
+                                    </div>
+                                </div>
+                                <div class="formData grid-container">
+                                    <div class="col-3-6 col-6-6-md col-6-6-xs">
+                                        <button type="submit" id="update" class="align-text updateEntryBtn" onclick="editEntry()">Update Entry</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    <!-- <div class="added-diaries-wrapper"></div> -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </main>
-
-    <footer>MyPersonalDiary Copyright &copy; 2019</footer>
-    
-    <script src="../js/modifyentry.js"></script>
-</body>
+        </main>
+        <footer>MyPersonalDiary Copyright &copy; 2019</footer>
+        <script src="../js/modifyentry.js"></script>
+    </body>
 </html>

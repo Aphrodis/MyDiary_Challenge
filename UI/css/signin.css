@@ -38,7 +38,8 @@ h1{
     outline: none;
 }
 .js-login-button {
-    color: blue;
+    color: whitesmoke;
+    background-color: rgb(5, 26, 49);
     font-size: 16px;
     font-weight: bold;
     padding: 10px;
@@ -52,8 +53,9 @@ h1{
     margin-left: 35%;
 }
 .js-login-button:hover{
-    background: rgb(194, 72, 72);
-    color: white;
+    background: rgb(5, 4, 4);
+    /* color: rgb(5, 104, 209); */
+    font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
     cursor: pointer;
     position: relative;

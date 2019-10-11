@@ -1,3 +1,6 @@
+body {
+  background-color: rgb(227, 234, 241);
+}
 .diaries-title {
   text-align: center;
   font-size: 30px;
@@ -82,4 +85,17 @@ background-color: #9CB3C4;
 .link {
   text-decoration: none;
   color: #ffffff;
+}
+
+@media (min-width: 0px) and (max-width: 599px) {
+  .container {
+    width: 96%;
+    margin: 50px;
+  }
+}
+@media (min-width: 600px) and (max-width: 900px) {
+  .container {
+    width: 96%;
+    margin: 20px auto;
+  }
 }

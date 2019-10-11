@@ -1,7 +1,9 @@
 .container {
   width: 50%;
   margin: 0px auto;
-  background-color: green;
+  background-color: rgb(86, 150, 218);
+  border-radius: 5px;
+  padding-bottom: 15px;
 }
 
 .diary-reminder {
@@ -24,6 +26,7 @@
 }
 .my-profile img{
   margin-left: 25%;
+  padding-top: 15px;
 }
 .ul-style {
   list-style-type: none;
@@ -60,4 +63,13 @@
   -moz-transform: translate3d(100%, 0, 0);
   transform: translate3d(100%, 0, 0);
   background: #0b0b14;
+}
+
+@media (min-width: 0px) and (max-width: 599px) {
+  .container {
+    width: 96%;
+    margin: 0px auto;
+    padding-bottom: 15px;
+  }
+
 }
