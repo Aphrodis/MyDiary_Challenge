@@ -1,3 +1,6 @@
+/* .container {
+  background-color: black;
+} */
 #full-entry {
   height: 100%;
   width: 50%;
@@ -82,9 +85,9 @@
 .button:hover{
   background-color: rgb(49, 105, 160);
 }
-footer{
-  /* padding: 3px; */
-  /* margin-top: 0; */
+/* footer{
+  padding: 3px;
+  margin-top: 0;
   color: #ffffff;
   background-color: tomato;
   text-align: center;
@@ -92,4 +95,4 @@ footer{
   bottom: 0;
   width: 100%;
   height: 2.5rem;   
-}
+} */

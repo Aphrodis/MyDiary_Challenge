@@ -5,20 +5,11 @@ body{
     font-size: 20px;
     height: 100%; 
 }
-/*CSS for the header*/
-/* nav {
-    display: none;
-}
-@media (min-width: 768px) {
-    nav {
-        display: none;
-    }
-} */
 
 header{
     background-color: black;
     color: white;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     min-height: 50px;
     border-bottom: tomato 3px solid;  
 }
@@ -28,13 +19,11 @@ header a{
     /* text-transform: uppercase; */
     font-size: 18px;
 }
-  
 header ul li{
     /* float: left; */
     padding: 0 20px 0 20px;
     display: inline;
 }
-
 header h1{
     font-family: 'pacifico';
     font-style: italic;
