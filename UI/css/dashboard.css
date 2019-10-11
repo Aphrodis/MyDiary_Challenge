@@ -140,12 +140,11 @@ a {
     width: 100% !important;
   }
 }
-
   /* sidebar */
 .sidebar {
   padding: 10px 0px;
   background:	rgb(188, 209, 209);
-  height: 58vh
+  height: 56vh
 }
 .sidebar ul {
   padding: 10px;

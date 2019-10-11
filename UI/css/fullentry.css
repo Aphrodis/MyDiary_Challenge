@@ -1,21 +1,19 @@
-/* .container {
-  background-color: black;
-} */
+body {
+  background-color: rgb(227, 234, 241);
+}
+
+.container {
+  padding-top: 40px;
+  /* padding-bottom: 3em; */
+}
 #full-entry {
   height: 100%;
   width: 50%;
-  margin: auto;
-  padding: 10px;
+  margin: 0px auto;
+  padding: 20px;
   }
 #full-entry article{
   float: right;
-}
-
-#entry-title article div button {
-  padding-right: 10px;
-  color: #0d529d;
-  -webkit-transition: 1s;
-  transition: 1s;
 }
 
 #full-entry article .entry-content {
@@ -26,16 +24,6 @@
 }
 .align-text{
   text-align: center;
-}
-
-.edit-entry, .delete-entry {
-  width: 100px;
-  height: 40px;
-  font-size: 14px;
-  color: white;
-  font-weight: bold;
-  background-color: #555;
-  font-family: 'Times New Roman', Times, serif;
 }
 
 .alert {
@@ -61,6 +49,12 @@
 .delete-message{
   padding-top: 80px;
 }
+.confirmBtn{
+  background-color: green;
+  color: whitesmoke;
+  border: none;
+  padding: 12px;
+}
 .cancelBtn {
   background-color: rgb(206, 41, 41);
   color: #fff;
@@ -68,12 +62,6 @@
   padding: 12px;
 }
 
-.confirmBtn{
-  background-color: green;
-  color: whitesmoke;
-  border: none;
-  padding: 12px;
-}
 .button {
   color: rgb(255, 255, 255);
   background-color:#444;
@@ -83,7 +71,7 @@
   cursor: pointer;
 }
 .button:hover{
-  background-color: rgb(49, 105, 160);
+  background-color: rgb(20, 61, 102);
 }
 /* footer{
   padding: 3px;
