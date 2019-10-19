@@ -26,30 +26,7 @@ const data = [
 
 
 
-class EntriesController {
-    getAllEntries(req, res) {
-        return res.status(200).send({
-            message: 'Entries retrieved successfully',
-            data,
-        });
-    }
-
-    getEntry(req, res) {
-        const entry = data.find(c => c.id === parseInt(req.params.id));
-
-        if(!entry) {
-            return res.status(404).send({
-                message: `Entry with an id of ${req.params.id} was not found`,
-            });
-        } else {
-            return res.status(200).send({
-                message: 'Entry retrieved successfully',
-                entry
-            });
-        }
-    }
-
-    
+class EntriesController {    
     createEntry(req, res) {
         const result = Schema.validateEntry(req.body);
         if(result.error) {
@@ -73,53 +50,6 @@ class EntriesController {
                 // entry
             });
         }
-    }
-
-    updateEntry(req, res) {
-        //validation
-        const entry = data.find(c => c.id === parseInt(req.params.id));
-
-        if(!entry) {
-            return res.status(404).send({
-                message: `Sorry, Entry with an id of ${req.params.id} was not found`,
-            });
-        }
-
-        const result = Schema.validateEntry(req.body);
-        if(result.error) {
-            return res.status(400).send(result.error.details[0].message)
-        }
-
-        const index = data.indexOf(entry);
-        const updatedEntry = {
-            id: entry.id,
-            title: req.body.title || entry.title,
-            updatedOn: new Date(),
-            description: req.body.description || entry.description,
-        };
-        data.splice(index, 1, updatedEntry);
-        return res.status(201).send({
-            message: 'Entry successfully edited',
-            updatedEntry,
-        });
-    }
-
-    deleteEntry(req, res) {
-        const entry = data.find(c => c.id === parseInt(req.params.id));
-
-        if(!entry) {
-            return res.status(404).send({
-                message: `Can't find the entry with an id of ${req.params.id}`,
-            });
-        }
-
-        //Delete
-        const index = data.indexOf(entry);
-        data.splice(index, 1);
-        return res.status(200).send({
-            message: 'Entry successfully deleted',
-            entry,
-        });
     } 
 }
 
