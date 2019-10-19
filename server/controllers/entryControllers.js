@@ -26,31 +26,13 @@ const data = [
 
 
 
-class EntriesController {    
-    createEntry(req, res) {
-        const result = Schema.validateEntry(req.body);
-        if(result.error) {
-            return res.status(400).send({
-                message: result.error.details[0].message,
-            });
-        } else {
-            const entry = {
-                id: data.length + 1,
-                createdOn: new Date(),
-                title: req.body.title,
-                description: req.body.description
-            }
-            data.push(entry);
-            return res.status(200).send({
-                id: entry.id,
-                message: 'entry successfully created',
-                createdOn: entry.createdOn,
-                title: entry.title,
-                description: entry.description
-                // entry
-            });
-        }
-    } 
+class EntriesController {
+    getAllEntries(req, res) {
+        return res.status(200).send({
+            message: 'Entries retrieved successfully',
+            data,
+        });
+    }
 }
 
 const entryController = new EntriesController();
