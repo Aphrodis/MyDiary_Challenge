@@ -27,8 +27,37 @@ class usersController {
             });        
         }
     }
-}
 
+    userSignin(req, res) {
+        //validation
+        const userLogin = Schema.validateUserSignin(req.body);
+
+        if(userLogin.error) {
+            return res.status(400).send(userLogin.error.details[0].message);
+        } else {
+            const data = {
+                // username: req.body.username,
+                email: req.body.email,
+                password: req.body.password,
+            };
+            return res.status(200).send({
+                message: "User signed in successfully",
+                data,
+            });
+        }
+    }
+}
+// function validateUser(user) {
+//     const userSchema = Joi.object().keys({
+//         firstname: Joi.string().alphanum().min(4).required(),
+//         lastname: Joi.string().alphanum().min(4).required(),
+//         username: Joi.string().alphanum().min(4).max(19).required(),
+//         email: Joi.string().trim().email( {minDomainAtoms: 2} ).required(),
+//         password: Joi.string().regex(/^[a-zA-Z0-9]{6,20}$/).required(),
+//         confirmPassword: Joi.any().valid(Joi.ref('password')).required()
+//     });
+//     return Joi.validate(user, userSchema);
+// }
 
 const userController = new usersController();
 

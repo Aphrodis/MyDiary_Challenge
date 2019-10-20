@@ -21,8 +21,16 @@ function validateUserSignup(user) {
     return Joi.validate(user, userSchema);
 }
 
+function validateUserSignin(userSignin){
+    const userSigninSchema = Joi.object().keys({
+        // username: Joi.string().alphanum().min(3).max(16).required(),
+        email: Joi.string().trim().email( {minDomainAtoms: 2}).required(),
+        password: Joi.string().regex(/^[a-zA-Z0-9]{6,35}$/).required(),
+    });
+    return Joi.validate(userSignin, userSigninSchema);
+}
 
-export default {validateEntry, validateUserSignup};
+export default {validateEntry, validateUserSignup, validateUserSignin};
 
 
 // const userSchema = Joi.object().keys({
