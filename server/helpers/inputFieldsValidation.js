@@ -9,5 +9,4 @@ function validateEntry(entry) {
     return Joi.validate(entry, entrySchema);
 } 
 
-
 export default validateEntry;
