@@ -32,6 +32,23 @@ class EntriesController {
             data,
         });
     }
+
+    getEntry(req, res) {
+        const entry = data.find(c => c.id === parseInt(req.params.id));
+
+        if(!entry) {
+            return res.status(404).send({
+                message: `Entry with an id of ${req.params.id} was not found`,
+            });
+        } else {
+            return res.status(200).send({
+                message: 'Entry retrieved successfully',
+                entry
+            });
+        }
+    }
+
+
 }
 
 const entryController = new EntriesController();
