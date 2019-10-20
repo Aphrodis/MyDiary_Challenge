@@ -13,4 +13,7 @@ entriesRouter.get('/api/v1/entries', EntryController.getAllEntries);
 //Get a single entry
 entriesRouter.get('/api/v1/entries/:id', EntryController.getEntry);
 
+//Modify an entry
+entriesRouter.patch('/api/v1/entries/:id', EntryController.updateEntry);
+
 export default entriesRouter;

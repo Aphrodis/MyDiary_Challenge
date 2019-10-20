@@ -48,11 +48,9 @@ class EntriesController {
         }
     }
 
-
     createEntry(req, res) {
         // console.log('req', req.userData);
         const result = Schema.validateEntry(req.body);
-        // const result = Schema.validateEntry(req.body);
         if(result.error) {
             return res.status(401).send({
                 message: result.error.details[0].message,
@@ -81,6 +79,35 @@ class EntriesController {
                 // entry
             });
         }
+    }
+
+    updateEntry(req, res) {
+        //validation
+        const entry = data.find(c => c.id === parseInt(req.params.id));
+
+        if(!entry) {
+            return res.status(404).send({
+                message: `Sorry, Entry with an id of ${req.params.id} was not found`,
+            });
+        }
+
+        const result = Schema.validateEntry(req.body);
+        if(result.error) {
+            return res.status(400).send(result.error.details[0].message)
+        }
+
+        const index = data.indexOf(entry);
+        const updatedEntry = {
+            id: entry.id,
+            title: req.body.title || entry.title,
+            updatedOn: new Date(),
+            description: req.body.description || entry.description,
+        };
+        data.splice(index, 1, updatedEntry);
+        return res.status(201).send({
+            message: 'Entry successfully edited',
+            updatedEntry,
+        });
     }
 }
 
