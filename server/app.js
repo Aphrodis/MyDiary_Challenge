@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //Make use of middleware(router)
 app.use(entriesRouter);
-// app.use(usersRouter);
+app.use(usersRouter);
 
 
 
