@@ -9,4 +9,29 @@ function validateEntry(entry) {
     return Joi.validate(entry, entrySchema);
 } 
 
-export default validateEntry;
+function validateUserSignup(user) {
+    const userSchema = Joi.object().keys({
+        firstname: Joi.string().alphanum().required(),
+        lastname: Joi.string().alphanum().required(),
+        // username: Joi.string().alphanum().min(4).required(),
+        email: Joi.string().trim().email( {minDomainAtoms: 2} ).required(),
+        password: Joi.string().regex(/^[a-zA-Z0-9]{6,35}$/).required(),
+        confirmPassword: Joi.any().valid(Joi.ref('password')).required()
+    });
+    return Joi.validate(user, userSchema);
+}
+
+
+export default {validateEntry, validateUserSignup};
+
+
+// const userSchema = Joi.object().keys({
+//     firstname: Joi.string().alphanum().min(4).required(),
+//     lastname: Joi.string().alphanum().min(4).required(),
+//     // username: Joi.string().alphanum().min(4).required(),
+//     email: Joi.string().trim().email( {minDomainAtoms: 2} ).required(),
+//     password: Joi.string().regex(/^[a-zA-Z0-9]{6,35}$/).required(),
+//     confirmPassword: Joi.any().valid(Joi.ref('password')).required()
+// });
+
+// export default userSchema;
