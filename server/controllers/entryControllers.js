@@ -49,6 +49,39 @@ class EntriesController {
     }
 
 
+    createEntry(req, res) {
+        // console.log('req', req.userData);
+        const result = Schema.validateEntry(req.body);
+        // const result = Schema.validateEntry(req.body);
+        if(result.error) {
+            return res.status(401).send({
+                message: result.error.details[0].message,
+            });
+        } else {
+            // const entry = new Entry({
+            //     id: data.length + 1,
+            //     createdOn: req.body.createdOn,
+            //     title: req.body.title,
+            //     description: req.body.description
+            // });
+            const entry = {
+                id: data.length + 1,
+                createdOn: new Date(),
+                title: req.body.title,
+                // owner:req.userData.email,
+                description: req.body.description
+            }
+            data.push(entry);
+            return res.status(200).send({
+                id: entry.id,
+                message: 'entry successfully created',
+                createdOn: entry.createdOn,
+                title: entry.title,
+                description: entry.description
+                // entry
+            });
+        }
+    }
 }
 
 const entryController = new EntriesController();
