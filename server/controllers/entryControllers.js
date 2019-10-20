@@ -1,8 +1,4 @@
-// import entries from '../routes/index.js';
 import Schema from '../helpers/inputFieldsValidation';
-// import Entry from '../models/entry'
-
-// import Joi from 'joi';
 
 const data = [
     {
@@ -109,6 +105,24 @@ class EntriesController {
             updatedEntry,
         });
     }
+
+    deleteEntry(req, res) {
+        const entry = data.find(c => c.id === parseInt(req.params.id));
+
+        if(!entry) {
+            return res.status(404).send({
+                message: `Can't find the entry with an id of ${req.params.id}`,
+            });
+        }
+
+        //Delete
+        const index = data.indexOf(entry);
+        data.splice(index, 1);
+        return res.status(200).send({
+            message: 'Entry successfully deleted',
+            entry,
+        });
+    } 
 }
 
 const entryController = new EntriesController();

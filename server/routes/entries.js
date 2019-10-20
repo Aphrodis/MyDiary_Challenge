@@ -16,4 +16,8 @@ entriesRouter.get('/api/v1/entries/:id', EntryController.getEntry);
 //Modify an entry
 entriesRouter.patch('/api/v1/entries/:id', EntryController.updateEntry);
 
+//Delete a single entry
+entriesRouter.delete('/api/v1/entries/:id', EntryController.deleteEntry);
+
+
 export default entriesRouter;
