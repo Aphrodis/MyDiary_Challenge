@@ -3,8 +3,6 @@ import bodyParser from 'body-parser';
 // import Joi from 'joi';
 import entriesRouter from './routes/entries';
 import usersRouter from './routes/users';
-// var express = require('express')
-
 //setup express app
 const app = express();
 
@@ -14,7 +12,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 //Make use of middleware(router)
 app.use(entriesRouter);
-app.use(usersRouter);
+// app.use(usersRouter);
 
 
 
