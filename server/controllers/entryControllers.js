@@ -52,12 +52,6 @@ class EntriesController {
                 message: result.error.details[0].message,
             });
         } else {
-            // const entry = new Entry({
-            //     id: data.length + 1,
-            //     createdOn: req.body.createdOn,
-            //     title: req.body.title,
-            //     description: req.body.description
-            // });
             const entry = {
                 id: data.length + 1,
                 createdOn: new Date(),
