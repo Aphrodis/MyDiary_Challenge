@@ -11,12 +11,12 @@ function validateEntry(entry) {
 
 function validateUserSignup(user) {
     const userSchema = Joi.object().keys({
-        firstname: Joi.string().alphanum().required(),
-        lastname: Joi.string().alphanum().required(),
+        firstname: Joi.string().required(),
+        lastname: Joi.string().required(),
         // username: Joi.string().alphanum().min(4).required(),
         email: Joi.string().trim().email( {minDomainAtoms: 2} ).required(),
-        password: Joi.string().regex(/^[a-zA-Z0-9]{6,35}$/).required(),
-        confirmPassword: Joi.any().valid(Joi.ref('password')).required()
+        password: Joi.string().regex(/^[a-zA-Z0-9]{8,32}$/).required(),
+        // confirmPassword: Joi.any().valid(Joi.ref('password')).required()
     });
     return Joi.validate(user, userSchema);
 }
@@ -25,7 +25,7 @@ function validateUserSignin(userSignin){
     const userSigninSchema = Joi.object().keys({
         // username: Joi.string().alphanum().min(3).max(16).required(),
         email: Joi.string().trim().email( {minDomainAtoms: 2}).required(),
-        password: Joi.string().regex(/^[a-zA-Z0-9]{6,35}$/).required(),
+        password: Joi.string().alphanum().regex(/^[a-zA-Z0-9]{3,30}$/).required(),
     });
     return Joi.validate(userSignin, userSigninSchema);
 }
