@@ -1,23 +1,21 @@
 import express from 'express';
-// import Joi from 'joi';
-// import controllers from '../controllers/entryControllers';
-import EntryController from '../controllers/entryControllers'
+import entryControllers from '../controllers/entryControllers'
 import checkUser from '../helpers/checkUser';
 const entriesRouter = express.Router();
 
 //POST entry
-entriesRouter.post('/api/v1/entries',checkUser, EntryController.createEntry);
+entriesRouter.post('/api/v1/entries',checkUser, entryControllers.createEntry);
 
 //Get all diary entries
-entriesRouter.get('/api/v1/entries', EntryController.getAllEntries);
+entriesRouter.get('/api/v1/entries', entryControllers.getAllEntries);
 
 //Get a single entry
-entriesRouter.get('/api/v1/entries/:id', EntryController.getEntry);
+entriesRouter.get('/api/v1/entries/:id', entryControllers.getEntry);
 
 //Modify an entry
-entriesRouter.patch('/api/v1/entries/:id', checkUser, EntryController.updateEntry);
+entriesRouter.patch('/api/v1/entries/:id', checkUser, entryControllers.updateEntry);
 
 //Delete a single entry
-entriesRouter.delete('/api/v1/entries/:id', checkUser, EntryController.deleteEntry);
+entriesRouter.delete('/api/v1/entries/:id', checkUser, entryControllers.deleteEntry);
 
 export default entriesRouter;

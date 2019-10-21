@@ -14,4 +14,3 @@ const authentication =  (req, res, next) => {
 
 export default authentication
 
-// SECRETE KEY: 'helloWorld'
