@@ -1,12 +1,12 @@
 import express from 'express';
-import User from '../models/user';
-const usersRouter = express.Router();
 import { config } from 'dotenv';
-import usercontrollers from '../controllers/userControllers'
+import usercontrollers from '../controllers/userControllers';
+
+const usersRouter = express.Router();
 
 config(0);
 
-//User routes
+// User routes
 
 usersRouter.post('/api/v1/auth/signup', usercontrollers.createUser);
 
