@@ -4,6 +4,9 @@ import Schema from '../helpers/inputFieldsValidation';
 import jwt from 'jsonwebtoken';
 import User from '../models/user';
 import userController from '../controllers/userControllers';
+import { config } from 'dotenv';
+
+config(0);
 
 const usersRouter = express.Router();
 
@@ -22,7 +25,6 @@ const usersRouter = express.Router();
 const users = [];
 
 usersRouter.post('/api/v1/auth/signup', (req, res) =>{
-    // const user = Object.values(User.email === req.body.email);
     const user = users.find(c => c.email === req.body.email);
     if(user){
         return res.status(409).send({
@@ -32,18 +34,18 @@ usersRouter.post('/api/v1/auth/signup', (req, res) =>{
         bcrypt.hash(req.body.password, 10, (err, hash) =>{
             if(err) {
                 return res.status(500).json({
-                    //this failed. we don't have a password
+                    //No password
                     error: err,
                 });
             }  else {
                 const userData = Schema.validateUserSignup(req.body);
-                // const result = Schema.validateEntry(req.body);
                 if(userData.error) {
                     return res.status(401).send({
                         message: userData.error.details[0].message,
                     });
                 } else{
                     const data = {
+                        userId: users.length + 1,
                         firstname: req.body.firstname,
                         lastname: req.body.lastname,
                         email: req.body.email,
@@ -55,30 +57,48 @@ usersRouter.post('/api/v1/auth/signup', (req, res) =>{
                         data,
                     });
                 }
-            
-                
-                // .catch((err) =>{
-                //     console.log(err);
-                //     res.status(500).json({
-                //         error: err,
-                //     });
-                // });
             }
         });
     }
 });
 
-usersRouter.delete('/api/v1/auth/:id', (req, res) =>{
-    const deleteUser = users.find(c => c.id === req.params.id);
-    if(deleteUser){
-        return res.status(200).send({
-            message: 'User deleted',
-        })
-    } else {
-        return res.status(404).send({
-            message: `Can't find the entry with an id of ${req.params.id}`,
+usersRouter.post('/api/v1/auth/signin', (req, res) =>{
+    const user = users.find(c => c.email === req.body.email);
+    if(!user) {
+        return res.status(401).send({
+            message: 'Unauthorized/Wrong email',
         });
     }
+
+    bcrypt.compare(req.body.password, users[0].password, (err, result) =>{
+        if(err) {
+            return res.status(401).send({
+                message: 'Unauthorized/Incorrect password',
+            });
+        } else {
+            if(result) {
+                const token = jwt.sign({
+                    email: users[0].email,
+                    userId: users[0].userId,
+                }, 
+                'helloWorld',
+                // process.env.JWT_KEY,
+                {
+                    expiresIn:"1h"
+                }
+                );
+                return res.status(200).send({
+                    message: 'Auth successful/Logged in successfully',
+                    token: token,
+                });
+            } else {
+                return res.status(401).send({
+                    message: 'Unauthorized/The password is incorrect',
+                });
+            }
+        }
+    });
+
 });
 
 export default usersRouter;
