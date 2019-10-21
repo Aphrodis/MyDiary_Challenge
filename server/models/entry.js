@@ -1,4 +1,4 @@
-//class for defining an entry model
+// class for defining an entry model
 
 class Entry {
     constructor(id, title, description) {
