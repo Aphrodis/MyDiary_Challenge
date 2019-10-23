@@ -14,7 +14,8 @@ class Entry {
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
         const fullDate = `${year}-${month + 1}-${date}`;
-        return (this.createdOn = fullDate);   
+        this.createdOn = fullDate;
+        return this.createdOn;
     }
 }
 
