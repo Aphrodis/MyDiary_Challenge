@@ -26,6 +26,11 @@
             "error",
             4
         ],
-        "no-else-return": "off"
+        "no-else-return": "off",
+        "import/no-unresolved": "off",
+        "no-unused-vars": "off",
+        "no-unused-expressions": "off",
+        "no-sequences": "off",
+        "max-len": "off"
     }
 }

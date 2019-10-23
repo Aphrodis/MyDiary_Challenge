@@ -1,9 +1,6 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { config } from 'dotenv';
 import Schema from '../helpers/inputFieldsValidation';
-
-config(0);
 
 const users = [];
 const userControllers = {};
@@ -18,7 +15,7 @@ const createUser = (req, res) => {
     } else {
         bcrypt.hash(req.body.password, 10, (err, hash) => {
             if (err) {
-                return res.status(500).json({
+                return res.status(400).json({
                     // No password
                     error: err,
                 });
@@ -38,8 +35,12 @@ const createUser = (req, res) => {
             };
             users.push(data);
             return res.status(201).send({
+                // status: 201,
                 message: 'User created successfully',
-                data,
+                userId: data.userId,
+                firstname: data.firstname,
+                lastname: data.lastname,
+                email: data.email,
             });
         });
     }
@@ -47,34 +48,37 @@ const createUser = (req, res) => {
 
 const signin = (req, res) => {
     const user = users.find((c) => c.email === req.body.email);
+
     if (!user) {
-        return res.status(401).send({
-            message: 'Unauthorized/Wrong email',
+        return res.status(404).send({
+            message: 'Email not found',
         });
     }
 
     bcrypt.compare(req.body.password, users[0].password, (err, result) => {
         if (err) {
             return res.status(401).send({
-                message: 'Unauthorized/Incorrect password',
+                message: 'Incorrect password',
             });
         } else if (result) {
             const token = jwt.sign({
                 email: users[0].email,
                 userId: users[0].userId,
-            }, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
+            }, process.env.JWT_SECRET_KEY, { expiresIn: '1d' });
 
             return res.status(200).send({
-                message: 'Auth successful/Logged in successfully',
+                message: 'User logged in successfully',
                 token,
             });
         } else {
             return res.status(401).send({
-                message: 'Unauthorized/The password is incorrect',
+                message: 'The password is incorrect',
             });
         }
     });
 };
+
+// const generateToken = ()
 
 userControllers.createUser = createUser;
 userControllers.signin = signin;
