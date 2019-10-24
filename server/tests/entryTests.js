@@ -143,7 +143,7 @@ describe('User wants to create a new entry', () => {
             .send(entryData.invalidEntry)
             .end((err, res) => {
                 if (err) done(err);
-                expect(res.status).to.equal(401);
+                expect(res.status).to.equal(400);
                 expect(res.body).to.be.an('object');
                 done();
             });

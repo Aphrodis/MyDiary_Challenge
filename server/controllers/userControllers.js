@@ -8,7 +8,7 @@ const userControllers = {};
 // create a user
 const createUser = async (req, res) => {
     try {
-        const user = await (users.find((c) => c.email === req.body.email));
+        const user = users.find((c) => c.email === req.body.email);
         if (user) {
             return res.status(409).send({
                 message: 'Email already exists',
@@ -17,9 +17,9 @@ const createUser = async (req, res) => {
             // hash the password
             const passwordHash = await bcrypt.hash(req.body.password, 10);
 
-            const userData = await Schema.validateUserSignup(req.body);
+            const userData = Schema.validateUserSignup(req.body);
             if (userData.error) {
-                return res.status(401).send({
+                return res.status(400).send({
                     message: userData.error.details[0].message,
                 });
             }
@@ -42,13 +42,13 @@ const createUser = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
 const signin = async (req, res) => {
     try {
-        const user = await (users.find((c) => c.email === req.body.email));
+        const user = users.find((c) => c.email === req.body.email);
         if (!user) {
             return res.status(404).send({
                 message: 'Email not found',
@@ -60,9 +60,9 @@ const signin = async (req, res) => {
                 message: 'Incorrect password',
             });
         }
-        const userSignInData = await Schema.validateUserSignin(req.body);
+        const userSignInData = Schema.validateUserSignin(req.body);
         if (userSignInData.error) {
-            return res.status(401).send({
+            return res.status(400).send({
                 message: userSignInData.error.details[0].message,
             });
         }
@@ -78,7 +78,7 @@ const signin = async (req, res) => {
             token,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
