@@ -11,7 +11,7 @@ const { expect } = chai;
 
 // User signup
 describe('User wants to signup', () => {
-    it('should return an error due invalid signup', (done) => {
+    it('should return an error due to invalid signup', (done) => {
         chai
             .request(app)
             .post('/api/v1/auth/signup')
@@ -77,7 +77,7 @@ describe('User tries to sign into his/her account', () => {
                 if (err) done(err);
                 expect(res).to.have.status(401);
                 expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('The password is incorrect');
+                expect(res.body).to.have.property('message').equal('Incorrect password');
                 done();
             });
     });
