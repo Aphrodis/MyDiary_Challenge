@@ -10,7 +10,7 @@ chai.should();
 const { expect } = chai;
 // Cache the token
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwaHJvZGlzQGtlcGxlci5vcmciLCJ1c2VySWQiOjEsImlhdCI6MTU3MTgzNTYwNSwiZXhwIjoxNTcxOTIyMDA1fQ.EVXMCMcu327mgkQjpxJiHz4U9sK80O4XnOwlfDeeQC4';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiYXBocm9kaXNAa2VwbGVyLm9yZyIsImlhdCI6MTU3MTkzMDU3OSwiZXhwIjoxNTcyMDE2OTc5fQ.8WRIMfj4VMcNIOyw9H69qbDl1Mmh4Nl0EflbZr4ID3U';
 
 // GET /api/v1/entries
 describe('View all diary entries', () => {
@@ -41,7 +41,7 @@ describe('View all diary entries', () => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
                 expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('Unauthenticated');
+                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
     });
@@ -115,7 +115,7 @@ describe('User wants to create a new entry', () => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
                 expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('Unauthenticated');
+                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
     });
@@ -159,7 +159,7 @@ describe('User wants to update a specific entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
-                expect(res.body).to.have.property('message').equal('Unauthenticated');
+                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
     });
@@ -207,14 +207,14 @@ describe('User wants to update a specific entry', () => {
 
 // DELETE entry
 describe('User wants to delete a specific entry', () => {
-    it('should return -Unauthorized due to invalid and/or not sent token', (done) => {
+    it('should not delete entry due to invalid and/or not sent token', (done) => {
         chai
             .request(app)
             .delete(`/api/v1/entries/${entryData.validId}`)
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
-                expect(res.body).to.have.property('message').equal('Unauthenticated');
+                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
     });
