@@ -8,8 +8,9 @@ const validSignUp = {
 };
 const invalidSignUp = {
     firstname: 'Aphrodice',
-    lastname: 'izabayo',
+    // lastname: 'izabayo',
     email: 'aphrodis@kepler.org',
+    password: 'thisismehere',
 };
 const emailExists = {
     firstname: 'Aphrodice',

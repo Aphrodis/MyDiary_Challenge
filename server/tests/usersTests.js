@@ -19,7 +19,6 @@ describe('User wants to signup', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(400);
-                expect(res.body).to.be.an('object');
                 done();
             });
     });

@@ -16,7 +16,7 @@ const getAllEntries = (req, res) => {
 };
 const getEntry = async (req, res) => {
     try {
-        const entry = await (data.find((c) => c.id === parseInt(req.params.id)));
+        const entry = data.find((c) => c.id === parseInt(req.params.id));
         if (!entry) {
             return res.status(404).send({
                 message: `Entry with an id of ${req.params.id} was not found`,
@@ -34,11 +34,9 @@ const getEntry = async (req, res) => {
 
 const createEntry = async (req, res) => {
     try {
-        const result = await (Schema.validateEntry(req.body));
-        if (result.error) {
-            return res.status(401).send({
-                message: result.error.details[0].message,
-            });
+        const { result, error } = Schema.validateEntry(req.body);
+        if (error !== null) {
+            res.status(400).send({ error: error.details[0].message });
         } else {
             const entry = await {
                 id: data.length + 1,
