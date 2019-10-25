@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import Schema from '../helpers/inputFieldsValidation';
 import userAuthToken from '../helpers/userAuthToken';
 
@@ -15,7 +16,7 @@ const createUser = async (req, res) => {
             });
         } else {
             // hash the password
-            const passwordHash = await bcrypt.hash(req.body.password, 10);
+            const passwordHash = bcrypt.hash(req.body.password, 10);
 
             const userData = Schema.validateUserSignup(req.body);
             if (userData.error) {
@@ -31,7 +32,7 @@ const createUser = async (req, res) => {
                 password: passwordHash,
             };
             users.push(data);
-            const token = await userAuthToken(data);
+            const token = userAuthToken(data);
             return res.status(201).send({
                 message: 'User created successfully',
                 userId: data.userId,
@@ -48,21 +49,21 @@ const createUser = async (req, res) => {
 
 const signin = async (req, res) => {
     try {
-        const user = users.find((c) => c.email === req.body.email);
+        const user = await (users.find((c) => c.email === req.body.email));
         if (!user) {
             return res.status(404).send({
                 message: 'Email not found',
             });
         }
-        const validPassword = await bcrypt.compare(req.body.password, users[0].password);
+        const validPassword = bcrypt.compare(req.body.password, users[0].password);
         if (!validPassword) {
             return res.status(401).send({
                 message: 'Incorrect password',
             });
         }
-        const userSignInData = Schema.validateUserSignin(req.body);
+        const userSignInData = await Schema.validateUserSignin(req.body);
         if (userSignInData.error) {
-            return res.status(400).send({
+            return res.status(401).send({
                 message: userSignInData.error.details[0].message,
             });
         }
@@ -78,10 +79,9 @@ const signin = async (req, res) => {
             token,
         });
     } catch (err) {
-        console.log(err);
+        console.log(err.details[0].message);
     }
 };
-
 userControllers.createUser = createUser;
 userControllers.signin = signin;
 

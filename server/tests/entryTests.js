@@ -10,7 +10,8 @@ chai.use(chaiHttp);
 const { expect } = chai;
 // Cache the token
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGlzQGdtYWlsLmNvbSIsImlhdCI6MTU3MTk5Njc2NiwiZXhwIjoxNTcyNjAxNTY2fQ.kS3DPS549bZubWmbCUPpFx29tVhL0yU2JEeBH1v0IVM';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6e30sImlhdCI6MTU3MjAwODg4MCwiZXhwIjoxNTcyMTgxNjgwfQ.AAQsgsCi06MUKweh3u-QdJc7hMq_F-LEuL4HgiHB86k';
+
 // GET /api/v1/entries
 describe('View all diary entries', () => {
     it('should return all the entries', (done) => {
@@ -96,6 +97,7 @@ describe('User wants to create a new entry', () => {
         chai
             .request(app)
             .post('/api/v1/entries')
+            .send(entryData.validEntry)
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
