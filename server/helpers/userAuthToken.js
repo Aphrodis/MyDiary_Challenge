@@ -5,7 +5,7 @@ config(0);
 
 const signAuthToken = (data) => {
     const jwtSecreteKey = process.env.JWT_SECRET_KEY;
-    const options = { expiresIn: '1d' };
+    const options = { expiresIn: '1w' };
     return jwt.sign(data, jwtSecreteKey, options);
 };
 export default signAuthToken;
