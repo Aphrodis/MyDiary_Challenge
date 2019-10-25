@@ -77,18 +77,6 @@ describe('View all diary entries', () => {
                 done();
             });
     });
-    it('should confirm the saved entry', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries')
-            .set('Authorization', `Bearer ${token}`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                done();
-            });
-    });
-
     it('should not return any entry due to sending invalid token', (done) => {
         chai
             .request(app)
