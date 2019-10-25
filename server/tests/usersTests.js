@@ -39,19 +39,19 @@ describe('User wants to signup', () => {
     //         });
     // });
 
-    it('should return that the email already exists', (done) => {
-        chai
-            .request(app)
-            .post('/api/v1/auth/signup')
-            .send(userInput.emailExists)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res).to.have.status(409);
-                expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('Email already exists');
-                done();
-            });
-    });
+    // it('should return that the email already exists', (done) => {
+    //     chai
+    //         .request(app)
+    //         .post('/api/v1/auth/signup')
+    //         .send(userInput.emailExists)
+    //         .end((err, res) => {
+    //             if (err) done(err);
+    //             expect(res).to.have.status(409);
+    //             expect(res.body).to.be.an('object');
+    //             expect(res.body).to.have.property('message').equal('Email already exists');
+    //             done();
+    //         });
+    // });
 });
 
 // User sign in
