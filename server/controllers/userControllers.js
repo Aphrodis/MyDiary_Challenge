@@ -5,7 +5,6 @@ import userAuthToken from '../helpers/userAuthToken';
 const users = [];
 const userControllers = {};
 
-// create a user
 const createUser = (req, res) => {
     const user = users.find((c) => c.email === req.body.email);
     if (user) {

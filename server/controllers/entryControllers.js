@@ -78,6 +78,7 @@ const updateEntry = (req, res) => {
     }
 };
 
+
 const deleteEntry = (req, res) => {
     const entry = data.find((c) => c.id === parseInt(req.params.id));
     if (!entry) {
