@@ -6,7 +6,7 @@ import app from '../app';
 import entryData from './dummyData/entries';
 // Configure chai
 chai.use(chaiHttp);
-chai.should();
+
 const { expect } = chai;
 // Cache the token
 // eslint-disable-next-line prefer-const
@@ -22,7 +22,6 @@ describe('View all diary entries', () => {
             .set('Authorization', `Bearer ${token}`)
             .send(entryData.retrieveOneEntry)
             .end((err, res) => {
-                // console.log(err);
                 if (err) done(err);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.be.an('object');
@@ -37,7 +36,6 @@ describe('View all diary entries', () => {
             .get('/api/v1/entries')
             .send(entryData.retrieveOneEntry)
             .end((err, res) => {
-                // console.log(err);
                 if (err) done(err);
                 expect(res.status).to.equal(401);
                 expect(res.body).to.be.an('object');
@@ -193,13 +191,10 @@ describe('User wants to update a specific entry', () => {
             .set('Content-Type', 'application/json')
             .send(entryData.validEntry)
             .end((err, res) => {
-                // console.log('bbbbbbbbbbbbbbbbbbbb--------------------------------------------------------------------------------', err, res);
-
                 if (err) done(err);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Entry successfully edited');
-                // console.log('bbbbbbbbbbbbbbbbbbbb--------------------------------------------------------------------------------');
                 done();
             });
     });
