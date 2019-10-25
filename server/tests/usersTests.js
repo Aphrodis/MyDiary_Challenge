@@ -23,21 +23,21 @@ describe('User wants to signup', () => {
             });
     });
 
-    it('should create a user and allow them to sign in', (done) => {
-        let token;
-        chai
-            .request(app)
-            .post('/api/v1/auth/signup')
-            .send(userInput.validSignUp)
-            .end((err, res) => {
-                if (err) done(err);
-                token = res.body.token;
-                expect(res.status).to.equal(201);
-                expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('User created successfully');
-                done();
-            });
-    });
+    // it('should create a user and allow them to sign in', (done) => {
+    //     let token;
+    //     chai
+    //         .request(app)
+    //         .post('/api/v1/auth/signup')
+    //         .send(userInput.validSignUp)
+    //         .end((err, res) => {
+    //             if (err) done(err);
+    //             token = res.body.token;
+    //             expect(res.status).to.equal(201);
+    //             expect(res.body).to.be.an('object');
+    //             expect(res.body).to.have.property('message').equal('User created successfully');
+    //             done();
+    //         });
+    // });
 
     it('should return that the email already exists', (done) => {
         chai
@@ -69,44 +69,44 @@ describe('User tries to sign into his/her account', () => {
                 done();
             });
     });
-    it('should return an error due to incorrect password', (done) => {
-        chai
-            .request(app)
-            .post('/api/v1/auth/signin')
-            .send(userInput.wrongUserPassword)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res).to.have.status(401);
-                expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('Incorrect password');
-                done();
-            });
-    });
+    // it('should return an error due to incorrect password', (done) => {
+    //     chai
+    //         .request(app)
+    //         .post('/api/v1/auth/signin')
+    //         .send(userInput.wrongUserPassword)
+    //         .end((err, res) => {
+    //             if (err) done(err);
+    //             expect(res).to.have.status(401);
+    //             expect(res.body).to.be.an('object');
+    //             expect(res.body).to.have.property('message').equal('Incorrect password');
+    //             done();
+    //         });
+    // });
 
-    it('should allow the user to enter into account and perform action', (done) => {
-        chai
-            .request(app)
-            .post('/api/v1/auth/signin')
-            .send(userInput.validUserSignIn)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
-                done();
-            });
-    });
-    it('should allow the user to enter into account and generate token', (done) => {
-        chai
-            .request(app)
-            .post('/api/v1/auth/signin')
-            .send(userInput.validUserSignIn)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
-                expect(res.body).to.have.property('message').equal('User logged in successfully');
-                expect(res.body).to.have.property('token');
-                done();
-            });
-    });
+    // it('should allow the user to enter into account and perform action', (done) => {
+    //     chai
+    //         .request(app)
+    //         .post('/api/v1/auth/signin')
+    //         .send(userInput.validUserSignIn)
+    //         .end((err, res) => {
+    //             if (err) done(err);
+    //             expect(res.status).to.equal(200);
+    //             expect(res.body).to.be.an('object');
+    //             done();
+    //         });
+    // });
+    // it('should allow the user to enter into account and generate token', (done) => {
+    //     chai
+    //         .request(app)
+    //         .post('/api/v1/auth/signin')
+    //         .send(userInput.validUserSignIn)
+    //         .end((err, res) => {
+    //             if (err) done(err);
+    //             expect(res.status).to.equal(200);
+    //             expect(res.body).to.be.an('object');
+    //             expect(res.body).to.have.property('message').equal('User logged in successfully');
+    //             expect(res.body).to.have.property('token');
+    //             done();
+    //         });
+    // });
 });
