@@ -15,11 +15,9 @@ env:
     JWT_SECRET_KEY: 0a4e184f120c78629532a42571e7e309c19b66ee6967644d4b6413d98451e2a0d7134345e2f51b1834176fe249c379230db1aedfa27fb34df89ec45a64e392c4
 install:
   - npm install
-  - npm install -g coveralls
 
 script:
   - npm run test
-  
-after_success:
   - npm run coveralls
+  
 sudo: false
