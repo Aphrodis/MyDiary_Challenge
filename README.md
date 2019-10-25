@@ -1,4 +1,5 @@
 # MyDiary
+[![Build Status](https://travis-ci.com/Aphrodis/MyDiary_Challenge.svg?branch=develop)](https://travis-ci.com/Aphrodis/MyDiary_Challenge)
 
 ## Project Overview
 MyDiary is an online journal where users can pen down their thoughts and feelings.
