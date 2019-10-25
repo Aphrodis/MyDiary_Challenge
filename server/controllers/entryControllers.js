@@ -61,14 +61,14 @@ const createEntry = async (req, res) => {
 
 const updateEntry = async (req, res) => {
     try {
-        const entry = await (data.find((c) => c.id === parseInt(req.params.id)));
+        const entry = data.find((c) => c.id === parseInt(req.params.id));
         if (!entry) {
             return res.status(404).send({
                 message: `Sorry, Entry with an id of ${req.params.id} was not found`,
             });
         }
 
-        const result = await Schema.validateEntry(req.body);
+        const result = Schema.validateEntry(req.body);
         if (result.error) {
             return res.status(400).send(result.error.details[0].message);
         } else {
@@ -92,7 +92,7 @@ const updateEntry = async (req, res) => {
 
 const deleteEntry = async (req, res) => {
     try {
-        const entry = await (data.find((c) => c.id === parseInt(req.params.id)));
+        const entry = data.find((c) => c.id === parseInt(req.params.id));
         if (!entry) {
             return res.status(404).send({
                 message: `Can't find the entry with an id of ${req.params.id}`,
