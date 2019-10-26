@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel server -d dist",
-    "devstart": "nodemon --exec babel-node ./server/app.js",
+    "devstart": "nodemon --exec @babel/node ./server/app.js",
     "test": "nyc mocha --require @babel/register ./server/tests --exit",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
   },

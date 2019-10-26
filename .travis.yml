@@ -14,7 +14,6 @@ env:
 
 install:
   - npm install
-  - npm ci
   - npm install -g coveralls
 script:
   - npm run test
