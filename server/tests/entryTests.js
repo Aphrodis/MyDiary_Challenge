@@ -8,9 +8,8 @@ import entryData from './dummyData/entries';
 chai.use(chaiHttp);
 
 const { expect } = chai;
-// Cache the token
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiYXBocm9kaXNAa2VwbGVyLm9yZyIsImlhdCI6MTU3MTkzMDU3OSwiZXhwIjoxNTcyMDE2OTc5fQ.8WRIMfj4VMcNIOyw9H69qbDl1Mmh4Nl0EflbZr4ID3U';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6e30sImlhdCI6MTU3MjAwODg4MCwiZXhwIjoxNTcyMTgxNjgwfQ.AAQsgsCi06MUKweh3u-QdJc7hMq_F-LEuL4HgiHB86k';
 
 // GET /api/v1/entries
 describe('View all diary entries', () => {
@@ -78,18 +77,6 @@ describe('View all diary entries', () => {
                 done();
             });
     });
-    it('should confirm the saved entry', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries')
-            .set('Authorization', `Bearer ${token}`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                done();
-            });
-    });
-
     it('should not return any entry due to sending invalid token', (done) => {
         chai
             .request(app)
@@ -109,6 +96,7 @@ describe('User wants to create a new entry', () => {
         chai
             .request(app)
             .post('/api/v1/entries')
+            .send(entryData.validEntry)
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);

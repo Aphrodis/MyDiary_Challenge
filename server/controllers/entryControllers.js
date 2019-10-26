@@ -11,7 +11,7 @@ const getAllEntries = (req, res) => {
             data,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 const getEntry = async (req, res) => {
@@ -28,15 +28,17 @@ const getEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
 const createEntry = async (req, res) => {
     try {
-        const { result, error } = Schema.validateEntry(req.body);
-        if (error !== null) {
-            res.status(400).send({ error: error.details[0].message });
+        const result = Schema.validateEntry(req.body);
+        if (result.error) {
+            return res.status(400).send({
+                message: result.error.details[0].message,
+            });
         } else {
             const entry = await {
                 id: data.length + 1,
@@ -55,7 +57,7 @@ const createEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -68,7 +70,7 @@ const updateEntry = async (req, res) => {
             });
         }
 
-        const result = Schema.validateEntry(req.body);
+        const result = await Schema.validateEntry(req.body);
         if (result.error) {
             return res.status(400).send(result.error.details[0].message);
         } else {
@@ -86,7 +88,7 @@ const updateEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -105,7 +107,7 @@ const deleteEntry = async (req, res) => {
             entry,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 

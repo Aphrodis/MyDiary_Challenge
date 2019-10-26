@@ -62,7 +62,7 @@ const signin = async (req, res) => {
         }
         const userSignInData = Schema.validateUserSignin(req.body);
         if (userSignInData.error) {
-            return res.status(400).send({
+            return res.status(401).send({
                 message: userSignInData.error.details[0].message,
             });
         }

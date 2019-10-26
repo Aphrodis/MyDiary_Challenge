@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/app.js",
-    "test": "nyc mocha --require @babel/register ./server/tests --exit",
-    "build": "babel server -d dist",
-    "coveralls": "nyc report --reporter=text-lcov | coveralls"
+    "test": "mocha --require @babel/register ./server/tests --exit",
   },
   "repository": {
     "type": "git",
@@ -28,6 +26,7 @@
     "express": "^4.17.1",
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
+    "npm-watch": "^0.6.0",
     "uuidv4": "^5.0.1"
   },
   "devDependencies": {
