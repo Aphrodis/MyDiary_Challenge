@@ -11,7 +11,7 @@ const getAllEntries = (req, res) => {
             data,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 const getEntry = async (req, res) => {
@@ -28,7 +28,7 @@ const getEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -57,7 +57,7 @@ const createEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -88,7 +88,7 @@ const updateEntry = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -107,7 +107,7 @@ const deleteEntry = async (req, res) => {
             entry,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
