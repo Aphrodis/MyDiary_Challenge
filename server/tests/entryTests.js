@@ -8,7 +8,6 @@ import entryData from './dummyData/entries';
 chai.use(chaiHttp);
 
 const { expect } = chai;
-// Cache the token
 // eslint-disable-next-line prefer-const
 let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6e30sImlhdCI6MTU3MjAwODg4MCwiZXhwIjoxNTcyMTgxNjgwfQ.AAQsgsCi06MUKweh3u-QdJc7hMq_F-LEuL4HgiHB86k';
 

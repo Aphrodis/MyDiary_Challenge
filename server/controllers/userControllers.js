@@ -42,7 +42,7 @@ const createUser = async (req, res) => {
             });
         }
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
@@ -78,7 +78,7 @@ const signin = async (req, res) => {
             token,
         });
     } catch (err) {
-        console.log(err.details[0].message);
+        console.log(err);
     }
 };
 
