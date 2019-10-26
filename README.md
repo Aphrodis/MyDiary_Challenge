@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.com/Aphrodis/MyDiary_Challenge.svg?branch=develop)](https://travis-ci.com/Aphrodis/MyDiary_Challenge)
 
+[![Known Vulnerabilities](https://snyk.io/test/github/Aphrodis/MyDiary_Challenge/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Aphrodis/MyDiary_Challenge?targetFile=package.json)
+
 ## Project Overview
 MyDiary is an online journal where users can pen down their thoughts and feelings.
 
