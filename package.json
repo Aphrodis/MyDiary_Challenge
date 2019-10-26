@@ -6,8 +6,12 @@
   "scripts": {
     "devstart": "nodemon --exec babel-node ./server/app.js",
     "test": "nyc mocha --require @babel/register ./server/tests --exit",
+<<<<<<< HEAD
     "build": "babel server -d dist",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
+=======
+    "build": "babel server -d dist"
+>>>>>>> 80f72790b02723c9e503e152b8195b86890af855
   },
   "repository": {
     "type": "git",
