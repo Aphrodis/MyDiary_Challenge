@@ -9,8 +9,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjIsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6e30sImlhdCI6MTU3MjAwODg4MCwiZXhwIjoxNTcyMTgxNjgwfQ.AAQsgsCi06MUKweh3u-QdJc7hMq_F-LEuL4HgiHB86k';
-
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNzg2NjgsImV4cCI6MTU3Mjc5NzA2OH0.zaKVWLsT2S46Zp2SL5oBczJ4Fc0pmHg-lj-cQvQHlt0';
 // GET /api/v1/entries
 describe('View all diary entries', () => {
     it('should return all the entries', (done) => {
