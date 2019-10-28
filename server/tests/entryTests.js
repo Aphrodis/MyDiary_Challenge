@@ -6,9 +6,8 @@ import app from '../app';
 import entryData from './dummyData/entries';
 // Configure chai
 chai.use(chaiHttp);
-chai.should();
+
 const { expect } = chai;
-// Cache the token
 // eslint-disable-next-line prefer-const
 let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNzg2NjgsImV4cCI6MTU3Mjc5NzA2OH0.zaKVWLsT2S46Zp2SL5oBczJ4Fc0pmHg-lj-cQvQHlt0';
 // GET /api/v1/entries
@@ -21,7 +20,6 @@ describe('View all diary entries', () => {
             .set('Authorization', `Bearer ${token}`)
             .send(entryData.retrieveOneEntry)
             .end((err, res) => {
-                // console.log(err);
                 if (err) done(err);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.be.an('object');
@@ -36,7 +34,6 @@ describe('View all diary entries', () => {
             .get('/api/v1/entries')
             .send(entryData.retrieveOneEntry)
             .end((err, res) => {
-                // console.log(err);
                 if (err) done(err);
                 expect(res.status).to.equal(401);
                 expect(res.body).to.be.an('object');
@@ -79,7 +76,6 @@ describe('View all diary entries', () => {
                 done();
             });
     });
-
     it('should not return any entry due to sending invalid token', (done) => {
         chai
             .request(app)
@@ -99,6 +95,7 @@ describe('User wants to create a new entry', () => {
         chai
             .request(app)
             .post('/api/v1/entries')
+            .send(entryData.validEntry)
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
@@ -181,13 +178,10 @@ describe('User wants to update a specific entry', () => {
             .set('Content-Type', 'application/json')
             .send(entryData.validEntry)
             .end((err, res) => {
-                // console.log('bbbbbbbbbbbbbbbbbbbb--------------------------------------------------------------------------------', err, res);
-
                 if (err) done(err);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Entry successfully edited');
-                // console.log('bbbbbbbbbbbbbbbbbbbb--------------------------------------------------------------------------------');
                 done();
             });
     });

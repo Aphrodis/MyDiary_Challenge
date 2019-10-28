@@ -1,6 +1,5 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-// import Joi from 'joi';
 import entriesRouter from './routes/entries';
 import usersRouter from './routes/users';
 // setup express app
