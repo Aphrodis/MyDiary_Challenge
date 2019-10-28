@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Aphrodis/MyDiary_Challenge.svg?branch=develop)](https://travis-ci.com/Aphrodis/MyDiary_Challenge) [![Maintainability](https://api.codeclimate.com/v1/badges/910f867611f0450cfc87/maintainability)](https://codeclimate.com/github/Aphrodis/MyDiary_Challenge/maintainability) [![Known Vulnerabilities](https://snyk.io/test/github/Aphrodis/MyDiary_Challenge/badge.svg?targetFile=package.json)](https://snyk.io/test/github/Aphrodis/MyDiary_Challenge?targetFile=package.json)
+
 # MyDiary
 
 ## Project Overview
