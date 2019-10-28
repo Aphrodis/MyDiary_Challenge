@@ -10,8 +10,8 @@ cache:
     - node_modules
 env:
   global:
-    JWT_SECRET_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyOTc5MTYsImV4cCI6MTU3MjgxNjMxNn0.Lbtw6i9RVql49AmmQvB6fzSmpDcriMYddva9CGphC0s
-install:
+    JWT_SECRET_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGlzQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFBiSHZEdmhkZmNESmRyeEdnMWxtYmVOUFdQN1hEcGtvWVhqN2JPejBtdm5QODRCT2t4UDZTIiwiaWF0IjoxNTcyMjk5MTM3LCJleHAiOjE1NzI4MTc1Mzd9.GwwwJP5aX_rLN_eNEkhucli1APJW80oQ-JgOqExjX70
+    install:
   - npm install
   - npm install -g coveralls
 script:
