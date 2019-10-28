@@ -10,8 +10,7 @@ chai.should();
 const { expect } = chai;
 // Cache the token
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNjYwMjAsImV4cCI6MTU3MjM1MjQyMH0.nsOy-Xq7yNMlNyF6Em9c8I3daWRc2PAInV9vocrxw1U';
-
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNzg2NjgsImV4cCI6MTU3Mjc5NzA2OH0.zaKVWLsT2S46Zp2SL5oBczJ4Fc0pmHg-lj-cQvQHlt0';
 // GET /api/v1/entries
 describe('View all diary entries', () => {
     it('should return all the entries', (done) => {
@@ -77,17 +76,6 @@ describe('View all diary entries', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(404);
-                done();
-            });
-    });
-    it('should confirm the saved entry', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries')
-            .set('Authorization', `Bearer ${token}`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
                 done();
             });
     });
