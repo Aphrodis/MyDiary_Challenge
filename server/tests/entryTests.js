@@ -10,7 +10,7 @@ chai.should();
 const { expect } = chai;
 // Cache the token
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiYXBocm9kaXNAa2VwbGVyLm9yZyIsImlhdCI6MTU3MTkzMDU3OSwiZXhwIjoxNTcyMDE2OTc5fQ.8WRIMfj4VMcNIOyw9H69qbDl1Mmh4Nl0EflbZr4ID3U';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNjYwMjAsImV4cCI6MTU3MjM1MjQyMH0.nsOy-Xq7yNMlNyF6Em9c8I3daWRc2PAInV9vocrxw1U';
 
 // GET /api/v1/entries
 describe('View all diary entries', () => {
