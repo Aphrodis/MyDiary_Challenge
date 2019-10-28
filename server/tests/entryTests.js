@@ -9,7 +9,7 @@ chai.use(chaiHttp);
 
 const { expect } = chai;
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRxRXpRTEhLeVQ0OG83Sks4a2dsaEguVFpEbjlaRU1idllGanppakljVmJKUkN3aGFMdlp2MiIsImlhdCI6MTU3MjI5NjQ1NywiZXhwIjoxNTcyODE0ODU3fQ.3bPqBqC0WtJQzAjyY2fEMiq-zbMuSXx_GdrD6822sWk';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRiYWwuS09oVkRVMVhTOFVBMkFBMVcudUZxZERtRXVMZGpiNzJvV29aOUJFMWc1RS9VUHpMLiIsImlhdCI6MTU3MjI5NzQ0MSwiZXhwIjoxNTcyODE1ODQxfQ.5DBpo3aabz2TcEdFQTwHbV7H27_jnKD5Ed1BpuguH3I';
 // GET /api/v1/entries
 describe('View all diary entries', () => {
     it('should return all the entries', (done) => {
