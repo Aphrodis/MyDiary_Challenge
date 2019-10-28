@@ -8,7 +8,6 @@ import userInput from './dummyData/users';
 chai.use(chaiHttp);
 
 const { expect } = chai;
-// let token;
 // User signup
 describe('User wants to signup', () => {
     it('should return an error due to invalid signup', (done) => {
