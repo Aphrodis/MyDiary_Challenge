@@ -8,7 +8,6 @@ import userInput from './dummyData/users';
 chai.use(chaiHttp);
 
 const { expect } = chai;
-
 // User signup
 describe('User wants to signup', () => {
     it('should return an error due to invalid signup', (done) => {
@@ -24,12 +23,14 @@ describe('User wants to signup', () => {
     });
 
     it('should create a user and allow them to sign in', (done) => {
+        let token;
         chai
             .request(app)
             .post('/api/v1/auth/signup')
             .send(userInput.validSignUp)
             .end((err, res) => {
                 if (err) done(err);
+                token = res.body.token;
                 expect(res.status).to.equal(201);
                 expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('User created successfully');
