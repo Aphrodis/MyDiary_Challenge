@@ -8,10 +8,10 @@ branches:
 cache:
   directories:
     - node_modules
-env:
-  global:
-    JWT_SECRET_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGlzQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiJDJiJDEwJFBiSHZEdmhkZmNESmRyeEdnMWxtYmVOUFdQN1hEcGtvWVhqN2JPejBtdm5QODRCT2t4UDZTIiwiaWF0IjoxNTcyMjk5MTM3LCJleHAiOjE1NzI4MTc1Mzd9.GwwwJP5aX_rLN_eNEkhucli1APJW80oQ-JgOqExjX70
-    install:
+# env:
+#   global:
+#     JWT_SECRET_KEY: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCRiYWwuS09oVkRVMVhTOFVBMkFBMVcudUZxZERtRXVMZGpiNzJvV29aOUJFMWc1RS9VUHpMLiIsImlhdCI6MTU3MjI5NzQ0MSwiZXhwIjoxNTcyODE1ODQxfQ.5DBpo3aabz2TcEdFQTwHbV7H27_jnKD5Ed1BpuguH3I
+install:
   - npm install
   - npm install -g coveralls
 script:
