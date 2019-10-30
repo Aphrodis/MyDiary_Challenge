@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,76 +9,117 @@
     <link rel="stylesheet" href="../css/nav.css">
     <title>User Dashboard|MyDiary</title>
 </head>
-<body> 
 
-    <header id="header">
-        <div class=" container my-container">
-            <div id="logo">
-                <h1>My<span class="firstname">Personal</span>Diary</h1>
-            </div>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li>
-                    <li><a href="../html/signup.html">Sign Up</a></li>
-                    <li><a href="../html/signin.html">Sign In</a></li>
-                    <li class="index"><a href="#">Dashboard</a></li>
-                    <li><a href="../html/profile.html">My Profile</a></li>
-                    <li><a href="../html/signin.html">Log out</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main>
-        <div class="main container">
-            <section id="mydashboard">
-                <div class="grid-container">
-                    <div class="col-2-6 col-6-6-md col-6-6-xs" id="on-left">
-                        <div class="align-text">
-                            <div class="createAndViewBtns">
-                                <button><a href="../html/newentry.html">Create A New Entry</a></button>
-                                <button><a href="../html/allentries.html">View All Entries</a></button>
-                            </div>
-                            <!-- <br> -->
-                            <aside class="sidebar">
-                                <h4>My Recent Entries</h4>
-                                <hr/>
-                                <ul class="recent-entries">
-                                    <li>
-                                        <a href="../html/fullentry.html"><h4 class="entry-title">Andela Developer Challenge</h4></a>
-                                    </li>
-                                    <li>
-                                        <a href="../html/fullentry.html"><h4 class="entry-title">The hardest day ever</h4></a>
-                                    </li>
-                                    <li>
-                                        <a href="../html/fullentry.html"><h4 class="entry-title">My plan for today</h4></a>
-                                    </li>
-                                    <li>
-                                        <a href="../html/fullentry.html"><h4 class="entry-title">Lorem Ipsum?</h4></a>
-                                    </li>
-                                </ul>
-                            </aside>
-                        </div>
-                    </div>
-                    <div class="col-4-6 col-6-6-md col-6-6-xs" id="on-right">
-                        <h2 class="align-text" id="welcome-title">Welcome To Your Daily Journal</h2>
-                        <div id="carousel">
-                            <div class="image-container slideshow">
-                                <div class="diary-content">
-                                    <h1 class="align-text">Write down your thoughts and feelings</h1>
-                                    <p class="align-text"></p>
-                                </div>
-                                <img src="../images/pendown.jpeg" alt="Journal Image">
-                            </div>
-                        </div>
-                    </div>
+<body>
+    <div id="container">
+        <header id="header">
+            <div class=" container my-container">
+                <div id="logo">
+                    <h1>My<span class="firstname">Personal</span>Diary</h1>
                 </div>
-            </section>
-        </div>
-    </main>
+                <nav>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li class="index"><a href="#">Dashboard</a></li>
+                        <li><a href="../html/profile.html">My Profile</a></li>
+                        <li><a href="../html/signin.html">Log out</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
 
-    <footer>MyPersonalDiary Copyright &copy; 2019</footer>   
-     
-    <script src="../js/entries.js"></script>
+        <main>
+            <div class="main container">
+                <section id="mydashboard">
+                    <div class="grid-container">
+                        <div class="col-2-6 col-6-6-md col-6-6-xs" id="on-left">
+                            <div class="align-text">
+                                <div class="createAndViewBtns">
+                                    <button><a href="../html/newentry.html">Create A New Entry</a></button>
+                                    <!-- <button><a href="../html/allentries.html">View All Entries</a></button> -->
+                                </div>
+                                <!-- <br> -->
+                                <aside class="sidebar">
+                                    <h1>My Diary Entries</h1>
+                                    <hr />
+                                    <ul class="all-entries">
+                                        <li>
+                                            <a class="entry-title" href="../html/dashboard.html">Andela Developer
+                                                Challenge</a>
+                                        </li>
+                                        <li>
+                                            <a class="entry-title" href="../html/dashboard.html">The hardest day
+                                                every</a>
+                                        </li>
+                                        <li>
+                                            <a class="entry-title" id="active-link" href="../html/dashboard.html">My
+                                                Plan
+                                                for today</a>
+                                        </li>
+                                        <li>
+                                            <a class="entry-title" href="../html/dashboard.html">Lorem Ipsum?</a>
+                                        </li>
+                                        <li>
+                                            <a class="entry-title" href="../html/dashboard.html">Another title here</a>
+                                        </li>
+                                    </ul>
+                                </aside>
+                            </div>
+                        </div>
+                        <div class="col-4-6 col-6-6-md col-6-6-xs" id="on-right">
+                            <h2 class="align-text" id="welcome-title">My Plan for Today</h2>
+                            <div id="carousel">
+                                <div class="image-container slideshow">
+                                    <div class="diary-content">
+                                        <p class="text-style">Contrary to popular belief, Lorem Ipsum is not simply
+                                            random
+                                            text. It has roots in a piece of classical Latin literature from 45 BC,
+                                            making
+                                            it over 2000 years old. Richard McClintock, a Latin professor at
+                                            Hampden-Sydney
+                                            College in Virginia, looked up one of the more obscure Latin words,
+                                            consectetur,
+                                            from a Lorem Ipsum passage, and going through the cites of the word in
+                                            classical
+                                            literature, discovered the undoubtable source. Lorem Ipsum comes from
+                                            sections
+                                            1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good
+                                            and
+                                            Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of
+                                            ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
+                                            "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+                                            Greatly
+                                            hearted has who believe. Drift allow green son walls
+                                            years
+                                            for blush. Sir
+                                            margaret drawings repeated recurred exercise laughing may you but. Do
+                                            repeated
+                                            whatever to welcomed absolute no. Fat surprise although outlived and
+                                            informed
+                                            shy
+                                            dissuade property.</p>
+                                    </div>
+                                    <div class="alert deleteEntryContainer">
+                                        <div class="delete-container">
+                                            <p class="delete-message">Are you sure to delete this entry?</p>
+                                            <button class="confirmBtn allow-delete">Confirm</button>
+                                            <button class="cancelBtn cancel-delete">Cancel</button>
+                                        </div>
+                                    </div>
+                                    <div class="buttons align-text">
+                                        <button class="button" onclick="location.href='../html/modifyentry.html'">Edit
+                                            Entry</button>
+                                        <button class="button deleteEntry">Delete Entry</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="../js/dashboard.js"></script>
 </body>
+
 </html>
