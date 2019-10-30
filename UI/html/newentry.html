@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="../css/newentry.css">
-        <link rel="stylesheet" href="../css/nav.css">
-        <title>Add New Entry|MyDiary</title>
-    </head>
-    <body>
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/newentry.css">
+    <link rel="stylesheet" href="../css/nav.css">
+    <title>Add New Entry|MyDiary</title>
+</head>
+
+<body>
+    <div id="body">
         <header id="header">
             <div class="my-container">
                 <div id="logo">
@@ -18,8 +20,6 @@
                 <nav>
                     <ul>
                         <li><a href="../index.html">Home</a></li>
-                        <li><a href="../html/signup.html">Sign Up</a></li>
-                        <li><a href="../html/signin.html">Sign In</a></li>
                         <li><a href="../html/dashboard.html">Dashboard</a></li>
                         <li><a href="../html/profile.html">My Profile</a></li>
                         <li><a href="../html/signin.html">Log out</a></li>
@@ -36,17 +36,20 @@
                                 <h3 class="entry-heading align-text">Add New Diary Entry</h3>
                                 <div class="formData grid-container">
                                     <div class="col-4-6 col-6-6-md col-6-6-xs">
-                                        <input type="text" class="input-field" id="entry-title" placeholder="Enter the Title" required/>
+                                        <input type="text" class="input-field" id="entry-title"
+                                            placeholder="Enter the Title" required />
                                     </div>
                                 </div>
                                 <div class="formData grid-container">
                                     <div class="col-4-6 col-6-6-md col-6-6-xs">
-                                        <textarea class="input-field" id="entry-content" placeholder="Enter the Entry Content" required></textarea>
+                                        <textarea class="input-field" id="entry-content"
+                                            placeholder="Enter entry description" required></textarea>
                                     </div>
                                 </div>
                                 <div class="formData grid-container">
                                     <div class="col-3-6 col-6-6-md col-6-6-xs">
-                                        <button type="submit" id="entry-add-btn" class="align-text addEntryBtn">Add Entry</button>
+                                        <button type="submit" id="entry-add-btn" class="align-text addEntryBtn">Add
+                                            Entry</button>
                                     </div>
                                 </div>
                             </form>
@@ -55,7 +58,8 @@
                 </div>
             </div>
         </main>
-        <footer>MyPersonalDiary Copyright &copy; 2019</footer>
-        <script src="../js/newentry.js"></script>
-    </body>
+    </div>
+    <script src="../js/newentry.js"></script>
+</body>
+
 </html>

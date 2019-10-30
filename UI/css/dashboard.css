@@ -1,3 +1,16 @@
+html, body {
+  margin:0;
+  padding:0;
+  height:100%;
+}
+body{
+  padding-bottom: 45px;
+}
+#container {
+  min-height:100%;
+  position:relative;
+}
+
 main {
   min-height: 100%;
 }
@@ -7,11 +20,12 @@ main {
 .container {
   width: 80%;
   margin: auto;
+  margin-top: 73px;
 }
 .align-text {
   text-align: center;
 }
-.recent-entries {
+.all-entries {
   list-style: none;
   padding-left: 0px;
 }
@@ -35,11 +49,6 @@ a {
 #mydashboard #on-left {
   padding: 20px;
 }
-#mydashboard #on-left h4 {
-  font-weight: bold;
-  font-size: 1em;
-  line-height: 24px;
-}
 #mydashboard #on-left .createAndViewBtns button{
   padding: 10px;
   width: 200px;
@@ -56,28 +65,43 @@ a {
 #mydashboard #on-right #carousel {
   position: relative;
   margin: auto;
-  border: 2px solid #f0f2f0;
-  height: 432px;
+  /* border: 0.5px solid #151615; */
+  height: 402px;
   width: 100%;
 }
-#mydashboard #on-right #carousel .slideshow {
-  position: absolute;
-  height: 100%;
-  width: 100%;
+.text-style {
+  margin: 10px;
+  text-align: justify;
 }
-#mydashboard #on-right #carousel .slideshow .diary-content {
-  position: absolute;
-  left: 10%;
-  right: 10%;
-  top: 43%;
-  z-index: 90;
-  margin: auto;
-  color: white;
+#active-link {
+  color: blue;
+  font-weight: bold;
 }
+.button {
+  color: rgb(255, 255, 255);
+  background-color:#444;
+  font-size: 18px;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 23px;
+  position: relative;
+}
+
+.button:hover{
+  background-color: rgb(20, 61, 102);
+}
+
 #dashboard #on-right #carousel .slideshow .diary-content h1 {
   font-weight: 800;
   font-size: 42px;
 }
+.diary-content {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 16px;
+}
+
 #mydashboard #on-right #carousel .slideshow img {
   opacity: 1;
   height: 100%;
@@ -98,9 +122,6 @@ a {
 }
 @media (min-width: 0px) and (max-width: 599px) {
   aside {
-    display: none;
-  }
-  #welcome-title {
     display: none;
   }
 }
@@ -143,7 +164,7 @@ a {
 .sidebar {
   padding: 10px 0px;
   background:	rgb(188, 209, 209);
-  height: 56vh
+  height: 50vh
 }
 .sidebar ul {
   padding: 10px;
@@ -151,19 +172,20 @@ a {
 }
 .sidebar ul li {
   margin-bottom: 9px;
+  padding: 2px 10px 2px 10px;
 }
 .sidebar ul li a {
   display: block;
-  padding: 2px 10px 2px 10px;
   border-radius: 10px;
 }
-.sidebar ul li a .entry-title {
+.sidebar ul li .entry-title {
   margin-bottom: 2px;
   margin-top: 6px;
-  color: #D2691E;
+  font-weight: bold;
+  color: rgb(5, 42, 63);
 }
-.sidebar ul li a .entry-title:hover {
-  color: #052F60;
+.sidebar ul li .entry-title:hover {
+  color: rgb(194, 73, 51);
 }
 
 /*media queries*/
@@ -171,8 +193,12 @@ a {
   .sidebar {
     width: 90%;
     margin: auto;
-    /* margin-top: 20px; */
+    /* margin-top: 93px; */
   }
+  #mydashboard #on-left {
+    padding: 20px;
+    margin-top: 56px;
+}
 }
 @media (min-width: 600px) and (max-width: 900px) {
   .sidebar {
@@ -180,4 +206,42 @@ a {
     margin: auto;
     /* margin-top: 20px; */
   }
+}
+.alert {
+  top: 0;
+  left: 0;
+  overflow: auto;
+  display: none;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+  z-index: 1;
+}
+.delete-container {
+  width: 38%;
+  text-align: center;
+  margin: 200px auto;
+  background-color: #fff;
+  height: 200px;
+  padding: 0 15px;
+  box-shadow: 2px -1px 3px 2px rgba(255, 255, 255, 0.5);
+}
+.delete-message{
+  padding-top: 80px;
+}
+.confirmBtn{
+  background-color: green;
+  color: whitesmoke;
+  border: none;
+  padding: 12px;
+}
+.confirmBtn:hover, .cancelBtn:hover {
+  cursor: pointer;
+}
+.cancelBtn {
+  background-color: rgb(206, 41, 41);
+  color: #fff;
+  border: none;
+  padding: 12px;
 }
