@@ -9,9 +9,15 @@ body{
 header{
     background-color: black;
     color: white;
-    /* padding-top: 20px; */
     min-height: 50px;
     border-bottom: tomato 3px solid;  
+
+    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
 }
 header a{
     color: white;
@@ -47,7 +53,6 @@ header nav{
 header .firstname, header .index a{
     color: tomato;
     font-weight: bold;
-    /* background-color: yellow; */
 }
 
 header a:hover{
@@ -109,14 +114,3 @@ header ul li:hover{
       text-align: center;
     }
   }
-
-footer{
-    top: 4px;
-    color: #ffffff;
-    background-color: tomato;
-    text-align: center;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    height: 2.5rem;   
-}
