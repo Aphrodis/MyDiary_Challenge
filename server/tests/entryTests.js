@@ -8,7 +8,7 @@ import entryData from './dummyData/entries';
 chai.use(chaiHttp);
 const { expect } = chai;
 // eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImZpcnN0bmFtZSI6IkFwaHJvZGljZSIsImxhc3RuYW1lIjoiSXphYmF5byIsImVtYWlsIjoiaXphYmF5b2FwaHJvZGljZUBnbWFpbC5jb20iLCJpYXQiOjE1NzIyNzg2NjgsImV4cCI6MTU3Mjc5NzA2OH0.zaKVWLsT2S46Zp2SL5oBczJ4Fc0pmHg-lj-cQvQHlt0';
+let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNDhhMDM1Zi02OTk0LTRmYmMtODZlZS0zZGU3ZGY0NTExNjYiLCJmaXJzdG5hbWUiOiJBcGhyb2RpY2UiLCJsYXN0bmFtZSI6Ikl6YWJheW8iLCJlbWFpbCI6Iml6YWJheW9hcGhyb2Rpc0BnbWFpbC5jb20iLCJpYXQiOjE1NzI1MzY4MDgsImV4cCI6MTU3MzA1NTIwOH0.eXcZf9Xk45TLZNKDRwmvjbcnE_bgZOoNDmVugssjjZY';
 // GET /api/v1/entries
 describe('View all diary entries', () => {
     it('should return all the entries', (done) => {
@@ -21,7 +21,6 @@ describe('View all diary entries', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Entries retrieved successfully');
                 expect(res.body).to.have.property('data');
                 done();
@@ -35,7 +34,6 @@ describe('View all diary entries', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
@@ -59,7 +57,6 @@ describe('View all diary entries', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Unauthenticated');
                 done();
             });
@@ -98,7 +95,6 @@ describe('User wants to create a new entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(401);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
                 done();
             });
@@ -113,7 +109,6 @@ describe('User wants to create a new entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Entry successfully created');
                 done();
             });
@@ -128,7 +123,6 @@ describe('User wants to create a new entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(400);
-                expect(res.body).to.be.an('object');
                 done();
             });
     });
@@ -179,7 +173,6 @@ describe('User wants to update a specific entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Entry successfully edited');
                 done();
             });
