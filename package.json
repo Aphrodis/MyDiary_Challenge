@@ -30,9 +30,6 @@
     "joi": "^14.3.1",
     "jsonwebtoken": "^8.5.1",
     "npm-watch": "^0.6.0",
-    "uuidv4": "^5.0.1"
-  },
-  "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
     "@babel/node": "^7.6.3",
@@ -44,12 +41,15 @@
     "babel-node": "0.0.1-security",
     "chai": "^4.2.0",
     "coveralls": "^3.0.7",
+    "mocha": "^6.2.2",
+    "nyc": "^14.1.1",
+    "uuidv4": "^5.0.1"
+  },
+  "devDependencies": {
     "eslint": "^6.5.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",
-    "mocha": "^6.2.2",
-    "nodemon": "^1.19.4",
-    "nyc": "^14.1.1"
+    "nodemon": "^1.19.4"
   },
   "engines": {
     "node": "12.x"
