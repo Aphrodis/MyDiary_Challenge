@@ -12,7 +12,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 - Server side Framework: Node/Express
 - Linting Library: ESLint
 - Style Guide: Airbnb
-- Testing Framework: Mocha
+- Testing Framework: Mocha 
 
 ## Set up
 - Clone this repository: ```git clone https://github.com/Aphrodis/MyDiary_Challenge.git```
