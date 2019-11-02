@@ -5,6 +5,7 @@ html, body {
 }
 body{
   padding-bottom: 45px;
+  font-family: 'Times New Roman', Times, serif;
 }
 #container {
   min-height:100%;
@@ -52,7 +53,7 @@ a {
 #mydashboard #on-left .createAndViewBtns button{
   padding: 10px;
   width: 200px;
-  background-color: rgb(7, 20, 34);
+  background-color: black;
   color: white;
   font-size: 19px;
   margin-bottom: 11px;
@@ -79,10 +80,10 @@ a {
 }
 .button {
   color: rgb(255, 255, 255);
-  background-color:#444;
-  font-size: 18px;
+  background-color: black;
+  font-size: 15px;
   border: none;
-  padding: 12px;
+  padding: 10px;
   cursor: pointer;
   font-weight: bold;
   margin-top: 23px;
@@ -90,7 +91,9 @@ a {
 }
 
 .button:hover{
-  background-color: rgb(20, 61, 102);
+  background-color: white;
+  color: black;
+  border: 3px solid black;
 }
 
 #dashboard #on-right #carousel .slideshow .diary-content h1 {
@@ -163,8 +166,10 @@ a {
   /* sidebar */
 .sidebar {
   padding: 10px 0px;
-  background:	rgb(188, 209, 209);
-  height: 50vh
+  /* background: rgb(3, 163, 150); */
+  border: 2px solid black;
+  height: 50vh;
+  border-radius: 12px;
 }
 .sidebar ul {
   padding: 10px;
@@ -244,4 +249,17 @@ a {
   color: #fff;
   border: none;
   padding: 12px;
+}
+
+footer{
+  color: #ffffff;
+background-color: rgb(14, 187, 172);
+text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+height: 2rem;   
+bottom:0;
+width:100%;
+  position: fixed;
 }
