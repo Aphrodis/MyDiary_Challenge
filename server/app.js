@@ -9,7 +9,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// Make use of middleware(router)
+// Make use of middleware
 app.use(entriesRouter);
 app.use(usersRouter);
 

@@ -91,7 +91,7 @@ form .formData #update {
 }
 
 .entry-wrapper {
-  background: rgb(143, 158, 173);
+  background-color: rgb(88, 173, 166);
   border-radius: 5px;
 }
 .entry-wrapper .input-field {
@@ -152,4 +152,17 @@ form .formData #update {
     /* width: 300px; */
     background-color: whitesmoke;
     color: black;
+}
+
+footer{
+  color: #ffffff;
+  background-color: rgb(3, 163, 150);
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;   
+  bottom:0;
+  width:100%;
+  position: fixed;
 }

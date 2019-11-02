@@ -11,7 +11,7 @@ const verifyToken = async (req, res, next) => {
             });
         }
         const token = await req.headers.authorization.split(' ')[1];
-        const authorizedUser = await jwt.verify(token, process.env.JWT_SECRET_KEY);
+        const authorizedUser = jwt.verify(token, process.env.JWT_SECRET_KEY);
         req.authorizedUser = authorizedUser;
         next();
     } catch (error) {

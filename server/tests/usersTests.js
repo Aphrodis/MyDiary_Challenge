@@ -32,7 +32,6 @@ describe('User wants to signup', () => {
                 if (err) done(err);
                 token = res.body.token;
                 expect(res.status).to.equal(201);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('User created successfully');
                 done();
             });
@@ -46,7 +45,6 @@ describe('User wants to signup', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res).to.have.status(409);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Email already exists');
                 done();
             });
@@ -63,7 +61,6 @@ describe('User tries to sign into his/her account', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res).to.have.status(404);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Email not found');
                 done();
             });
@@ -76,7 +73,6 @@ describe('User tries to sign into his/her account', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res).to.have.status(401);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('Incorrect password');
                 done();
             });
@@ -90,7 +86,6 @@ describe('User tries to sign into his/her account', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
                 done();
             });
     });
@@ -102,7 +97,6 @@ describe('User tries to sign into his/her account', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
-                expect(res.body).to.be.an('object');
                 expect(res.body).to.have.property('message').equal('User logged in successfully');
                 expect(res.body).to.have.property('token');
                 done();
