@@ -6,7 +6,7 @@ import app from '../app';
 import userInput from './dummyData/users';
 // Configure chai
 chai.use(chaiHttp);
-
+let token;
 const { expect } = chai;
 // User signup
 describe('User wants to signup', () => {
@@ -23,7 +23,6 @@ describe('User wants to signup', () => {
     });
 
     it('should create a user and allow them to sign in', (done) => {
-        let token;
         chai
             .request(app)
             .post('/api/v1/auth/signup')
@@ -51,8 +50,27 @@ describe('User wants to signup', () => {
     });
 });
 
+
 // User sign in
 describe('User tries to sign into his/her account', () => {
+    before('Create a user', (done) => {
+        const user = {
+            firstname: 'Aphrodice1',
+            lastname: 'Izabayo0',
+            email: 'izabayoaphrodicde@gmail.com',
+            password: 'thisismeheree',
+        };
+        chai
+            .request(app)
+            .post('/api/v1/auth/signup')
+            .send(user)
+            .end((err, res) => {
+                expect(res.status).to.equal(201);
+                expect(res.body).to.have.property('token');
+                token = res.body.token;
+                done();
+            });
+    });
     it('should return an error due to invalid email', (done) => {
         chai
             .request(app)
@@ -77,27 +95,18 @@ describe('User tries to sign into his/her account', () => {
                 done();
             });
     });
-
     it('should allow the user to enter into account and perform action', (done) => {
+        const signin = {
+            email: 'izabayoaphrodice@gmail.com',
+            password: 'thisismeheree',
+        };
         chai
             .request(app)
             .post('/api/v1/auth/signin')
-            .send(userInput.validUserSignIn)
+            .send(signin)
             .end((err, res) => {
                 if (err) done(err);
-                expect(res.status).to.equal(200);
-                done();
-            });
-    });
-    it('should allow the user to enter into account and generate token', (done) => {
-        chai
-            .request(app)
-            .post('/api/v1/auth/signin')
-            .send(userInput.validUserSignIn)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                expect(res.body).to.have.property('message').equal('User logged in successfully');
+                expect(res).to.have.status(200);
                 expect(res.body).to.have.property('token');
                 done();
             });

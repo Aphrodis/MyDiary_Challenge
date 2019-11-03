@@ -15,14 +15,14 @@ const updateEntry = {
     description: 'Put the content here',
 };
 const retrieveOneEntry = {
-    id: 4,
+    id: '4',
     createdOn: '2019-10-22T21:56:01.550Z',
     title: 'Retrieve',
     description: 'This entry should be retrieved',
 };
 const invalidId = 'id';
 const nonExistentId = 56;
-const validId = 1;
+const validId = '1';
 
 entryData.validEntry = validEntry;
 entryData.invalidEntry = invalidEntry;

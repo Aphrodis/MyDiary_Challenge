@@ -6,6 +6,13 @@ const validSignUp = {
     email: 'izabayoaphrodis@gmail.com',
     password: 'thisismehere',
 };
+
+const validUserSignUp = {
+    firstname: 'aaaaa',
+    lastname: 'bbbbbbb',
+    email: 'abcd@gmail.com',
+    password: 'uuuuuu',
+};
 const invalidSignUp = {
     firstname: 'Aphrodice',
     email: 'aphrodis@kepler.org',
@@ -35,6 +42,7 @@ const wrongUserEmail = {
 };
 
 userInput.validSignUp = validSignUp;
+userInput.validUserSignUp = validUserSignUp;
 userInput.invalidSignUp = invalidSignUp;
 userInput.emailExists = emailExists;
 userInput.wrongUser = wrongUser;

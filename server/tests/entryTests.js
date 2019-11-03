@@ -4,86 +4,32 @@ import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../app';
 import entryData from './dummyData/entries';
+import userData from './dummyData/users';
+import userAuthToken from '../helpers/userAuthToken';
 // Configure chai
 chai.use(chaiHttp);
 const { expect } = chai;
-// eslint-disable-next-line prefer-const
-let token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlNDhhMDM1Zi02OTk0LTRmYmMtODZlZS0zZGU3ZGY0NTExNjYiLCJmaXJzdG5hbWUiOiJBcGhyb2RpY2UiLCJsYXN0bmFtZSI6Ikl6YWJheW8iLCJlbWFpbCI6Iml6YWJheW9hcGhyb2Rpc0BnbWFpbC5jb20iLCJpYXQiOjE1NzI1MzY4MDgsImV4cCI6MTU3MzA1NTIwOH0.eXcZf9Xk45TLZNKDRwmvjbcnE_bgZOoNDmVugssjjZY';
 
-// GET /api/v1/entries
-describe('View all diary entries', () => {
-    it('should return all the entries', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries')
-            .set('Content-Type', 'application/json')
-            .set('Authorization', `Bearer ${token}`)
-            .send(entryData.retrieveOneEntry)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                expect(res.body).to.have.property('message').equal('Entries retrieved successfully');
-                expect(res.body).to.have.property('data');
-                done();
-            });
-    });
-    it('should not return entries due to not sending token/sending invalid token', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries')
-            .send(entryData.retrieveOneEntry)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(401);
-                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
-                done();
-            });
-    });
-    it('should allow the user to return a specific entry', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries/1')
-            .set('Authorization', `Bearer ${token}`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(200);
-                done();
-            });
-    });
-    it('should not return specific entry due to unavailable token', (done) => {
-        chai
-            .request(app)
-            .get('/api/v1/entries/1')
-            .set('Authorization', `Bearer ${token}dfdsfs`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(401);
-                expect(res.body).to.have.property('message').equal('Unauthenticated');
-                done();
-            });
-    });
-    it('should not return specific entry due to non-existent id', (done) => {
-        chai
-            .request(app)
-            .get(`/api/v1/entries/${entryData.nonExistentId}`)
-            .set('Authorization', `Bearer ${token}`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(404);
-                done();
-            });
-    });
-    it('should not return any entry due to sending invalid token', (done) => {
-        chai
-            .request(app)
-            .get(`/api/v1/entries/${entryData.nonExistentId}`)
-            .set('Authorization', `Bearer ${token}dfsdfs`)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res.status).to.equal(401);
-                done();
-            });
-    });
+let token;
+let cachedEntry = '';
+
+before('Create a user', (done) => {
+    const user = {
+        firstname: 'Aphrodice1',
+        lastname: 'Izabayo0',
+        email: 'izabayoaphrodice@gmail.com',
+        password: 'thisismeheree',
+    };
+    chai
+        .request(app)
+        .post('/api/v1/auth/signup')
+        .send(user)
+        .end((err, res) => {
+            expect(res.status).to.equal(201);
+            expect(res.body).to.have.property('token');
+            token = res.body.token;
+            done();
+        });
 });
 
 // POST /api/v1/entries
@@ -111,6 +57,17 @@ describe('User wants to create a new entry', () => {
                 if (err) done(err);
                 expect(res.status).to.equal(200);
                 expect(res.body).to.have.property('message').equal('Entry successfully created');
+                cachedEntry = res.body;
+                done();
+            });
+    });
+    it('should return status 200 to confirm the saved entry', (done) => {
+        chai
+            .request(app)
+            .get('/api/v1/entries')
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+                expect(res.status).to.equal(200);
                 done();
             });
     });
@@ -124,6 +81,70 @@ describe('User wants to create a new entry', () => {
             .end((err, res) => {
                 if (err) done(err);
                 expect(res.status).to.equal(400);
+                done();
+            });
+    });
+});
+
+// GET /api/v1/entries
+describe('View all diary entries', () => {
+    it('should return all entries', (done) => {
+        chai
+            .request(app)
+            .get('/api/v1/entries')
+            .set('Content-Type', 'application/json')
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.status).to.equal(200);
+                expect(res.body).to.have.property('message').equal('Entries retrieved successfully');
+                expect(res.body).to.have.property('allEntries');
+                done();
+            });
+    });
+
+    it('should not return entries due to not sending token', (done) => {
+        chai
+            .request(app)
+            .get('/api/v1/entries')
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.status).to.equal(401);
+                expect(res.body).to.have.property('message').equal('Ooops! Unauthenticated!');
+                done();
+            });
+    });
+
+    it('should allow the user to return a specific entry', (done) => {
+        chai
+            .request(app)
+            .get(`/api/v1/entries/${cachedEntry.id}`)
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.status).to.equal(200);
+                done();
+            });
+    });
+
+    it('should not return specific entry due to non-existent id', (done) => {
+        chai
+            .request(app)
+            .get(`/api/v1/entries/${entryData.nonExistentId}`)
+            .set('Authorization', `Bearer ${token}`)
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.status).to.equal(404);
+                done();
+            });
+    });
+    it('should not return specific entry due to not sending token', (done) => {
+        chai
+            .request(app)
+            .get(`/api/v1/entries/${entryData.nonExistentId}`)
+            .end((err, res) => {
+                if (err) done(err);
+                expect(res.status).to.equal(401);
                 done();
             });
     });
@@ -167,7 +188,7 @@ describe('User wants to update a specific entry', () => {
     it('should update the entry', (done) => {
         chai
             .request(app)
-            .patch(`/api/v1/entries/${entryData.validId}`)
+            .patch(`/api/v1/entries/${cachedEntry.id}`)
             .set('Authorization', `Bearer ${token}`)
             .set('Content-Type', 'application/json')
             .send(entryData.validEntry)
@@ -182,7 +203,7 @@ describe('User wants to update a specific entry', () => {
 
 // DELETE entry
 describe('User wants to delete a specific entry', () => {
-    it('should not delete entry due to invalid and/or not sent token', (done) => {
+    it('should not delete entry due not sent token', (done) => {
         chai
             .request(app)
             .delete(`/api/v1/entries/${entryData.validId}`)
@@ -215,10 +236,10 @@ describe('User wants to delete a specific entry', () => {
                 done();
             });
     });
-    it('should delete a user', (done) => {
+    it('should delete an entry', (done) => {
         chai
             .request(app)
-            .delete(`/api/v1/entries/${entryData.validId}`)
+            .delete(`/api/v1/entries/${cachedEntry.id}`)
             .set('Authorization', `Bearer ${token}`)
             .end((err, res) => {
                 if (err) done(err);
