@@ -1,9 +1,9 @@
 import bcrypt from 'bcrypt';
 import uuidv4 from 'uuid/v4';
 import Schema from '../helpers/inputFieldsValidation';
+import users from './userData';
 import userAuthToken from '../helpers/userAuthToken';
 
-const users = [];
 const userControllers = {};
 
 // create a user
@@ -12,6 +12,7 @@ const createUser = async (req, res) => {
         const user = users.find((c) => c.email === req.body.email);
         if (user) {
             return res.status(409).json({
+                status: 409,
                 message: 'Email already exists',
             });
         } else {
@@ -21,6 +22,7 @@ const createUser = async (req, res) => {
             const userData = Schema.validateUserSignup(req.body);
             if (userData.error) {
                 return res.status(400).json({
+                    status: 400,
                     message: userData.error.details[0].message,
                 });
             }
@@ -59,18 +61,21 @@ const signin = async (req, res) => {
         const user = users.find((c) => c.email === req.body.email);
         if (!user) {
             return res.status(404).json({
+                status: 404,
                 message: 'Email not found',
             });
         }
         const validPassword = await bcrypt.compare(req.body.password, users[0].password);
         if (!validPassword) {
             return res.status(401).json({
+                status: 401,
                 message: 'Incorrect password',
             });
         }
         const userSignInData = Schema.validateUserSignin(req.body);
         if (userSignInData.error) {
             return res.status(401).json({
+                status: 401,
                 message: userSignInData.error.details[0].message,
             });
         }
