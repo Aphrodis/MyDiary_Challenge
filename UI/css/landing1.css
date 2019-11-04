@@ -175,14 +175,13 @@ body{
 }
 
 footer{
-    color: #ffffff;
-	background-color: rgb(3, 163, 150);
-	text-align: center;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-	height: 2rem;   
-	bottom:0;
-	width:100%;
-    position: fixed;
+  color: #ffffff;
+  background-color: rgb(14, 187, 172);
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 12px;
+  width:100%;
+  position: fixed;
 }
