@@ -54,8 +54,8 @@ header nav{
 }
 
 header .firstname, header .index a{
-    /* color: rgb(3, 163, 150); */
-    color: white;
+    color: rgb(3, 163, 150);
+    /* color: white; */
     font-weight: bold;
 }
 
