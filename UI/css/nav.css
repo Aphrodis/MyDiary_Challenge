@@ -38,6 +38,9 @@ header h1{
 header #logo{
     float: left;
 }
+header #logo span{
+    color: rgb(3, 163, 150);
+}
   
 header #logo h1{
     margin: 0;
@@ -51,15 +54,15 @@ header nav{
 }
 
 header .firstname, header .index a{
-    color: rgb(38, 160, 38);
-    color: rgb(3, 163, 150);
+    /* color: rgb(3, 163, 150); */
+    color: white;
     font-weight: bold;
 }
 
-header a:hover{
-    color: #000000;
+/* header a:hover{
+    color: white;
     font-weight: bold;
-}
+} */
 ul{
     margin: 0;
     padding: 0;
@@ -74,9 +77,12 @@ header  ul li {
 }
 
 header ul li:hover{
-    background-color: white;
-    /* color: black; */
+    background-color: rgb(3, 163, 150);
+    color: black;
     border:none;
+    /* background-color: #DFAC2C; */
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
   }
 
 .my-container{
