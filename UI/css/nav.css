@@ -1,11 +1,3 @@
-/* body{
-    background-color: white;
-    margin: 0;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 17px;
-    height: 100%; 
-} */
-
 header{
     background-color: black;
     color: white;
@@ -38,9 +30,6 @@ header h1{
 header #logo{
     float: left;
 }
-header #logo span{
-    color: rgb(3, 163, 150);
-}
   
 header #logo h1{
     margin: 0;
@@ -53,16 +42,24 @@ header nav{
     font-weight: bold;
 }
 
-header .firstname, header .index a{
+header .index a {
+    color: rgb(3, 163, 150);
+    font-weight: bold;
+}
+
+header .index:hover {
+    background-color: white;
+    color: white;
+    border:none;
+  -webkit-transition: 0.8s;
+  transition: 0.8s;
+}
+header .firstname {
     color: rgb(3, 163, 150);
     /* color: white; */
     font-weight: bold;
 }
 
-/* header a:hover{
-    color: white;
-    font-weight: bold;
-} */
 ul{
     margin: 0;
     padding: 0;
