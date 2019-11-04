@@ -3,6 +3,8 @@ import uuidv4 from 'uuid/v4';
 import Schema from '../helpers/inputFieldsValidation';
 import users from './userData';
 import userAuthToken from '../helpers/userAuthToken';
+import queries from '../database/allQueries';
+import execute from '../database/connectDB';
 
 const userControllers = {};
 
@@ -33,7 +35,14 @@ const createUser = async (req, res) => {
                 email: req.body.email,
                 password: passwordHash,
             };
-            users.push(newUser);
+            // users.push(newUser);
+            const userResponse = execute(queries.createUser, [
+                newUser.userId,
+                newUser.firstname,
+                newUser.lastname,
+                newUser.email,
+                newUser.password,
+            ]);
             const authenticate = {
                 userId: newUser.userId,
                 firstname: newUser.firstname,
@@ -42,13 +51,20 @@ const createUser = async (req, res) => {
             };
             const token = userAuthToken(authenticate);
             return res.status(201).json({
-                status: 201,
                 message: 'User created successfully',
-                userId: newUser.userId,
-                firstname: newUser.firstname,
-                lastname: newUser.lastname,
-                email: newUser.email,
-                token,
+                response: {
+                    status: 201,
+                    userResponse,
+                    token,
+                },
+
+                // status: 201,
+                // message: 'User created successfully',
+                // userId: newUser.userId,
+                // firstname: newUser.firstname,
+                // lastname: newUser.lastname,
+                // email: newUser.email,
+                // token,
             });
         }
     } catch (err) {
