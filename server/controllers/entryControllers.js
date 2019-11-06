@@ -10,6 +10,7 @@ const getAllEntries = async (req, res) => {
     try {
         if (allEntries.length === 0) {
             return res.status(404).json({
+                status: 404,
                 message: 'You have not yet added any entry!',
             });
         }
@@ -26,7 +27,6 @@ const getEntry = async (req, res) => {
     const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
     const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
     const singleEntry = allEntries.find((entryInfo) => entryInfo.id === req.params.id);
-    console.log('ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo', singleEntry);
     try {
         if (!entry) {
             return res.status(404).json({
@@ -69,12 +69,9 @@ const createEntry = async (req, res) => {
             data.push(entry);
             return res.status(200).json({
                 status: 200,
-                id: entry.id,
                 message: 'Entry successfully created',
-                createdOn: entry.createdOn,
-                title: entry.title,
-                description: entry.description,
-                userId: entry.userId,
+                id: entry.id,
+                entry,
             });
         }
     } catch (err) {
