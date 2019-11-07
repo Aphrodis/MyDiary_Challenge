@@ -6,7 +6,6 @@
   "scripts": {
     "create": "babel-node ./server/db/createTables.js --exit",
     "drop": "babel-node ./server/db/dropTables.js --exit",
-    "pretest": "babel-node ./server/db/queries.js --exit",
     "build": "babel server -d dist",
     "test": "nyc mocha --require @babel/register ./server/tests --exit",
     "dev": "nodemon --exec babel-node ./server/app.js",

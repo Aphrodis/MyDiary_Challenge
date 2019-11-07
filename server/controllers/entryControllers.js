@@ -1,7 +1,9 @@
+/* eslint-disable prefer-const */
 /* eslint-disable radix */
-import uuidv4 from 'uuidv4';
+import uuid from 'uuid';
 import Schema from '../helpers/inputFieldsValidation';
 import data from './diaryData';
+import pool from '../config/config';
 
 const entryControllers = {};
 
@@ -10,6 +12,7 @@ const getAllEntries = async (req, res) => {
     try {
         if (allEntries.length === 0) {
             return res.status(404).json({
+                status: 404,
                 message: 'You have not yet added any entry!',
             });
         }
@@ -26,7 +29,6 @@ const getEntry = async (req, res) => {
     const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
     const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
     const singleEntry = allEntries.find((entryInfo) => entryInfo.id === req.params.id);
-    console.log('ooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo', singleEntry);
     try {
         if (!entry) {
             return res.status(404).json({
@@ -50,38 +52,47 @@ const getEntry = async (req, res) => {
     }
 };
 
+
 const createEntry = async (req, res) => {
+    const { userid } = req.user.rows[0];
+
+    const entryid = uuid.v4();
+    const entry = req.body;
+    const date = new Date();
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+    const createdon = `${day}/${month}/${year}`;
+
+    const addEntry = 'INSERT INTO entries (entryid, userid, createdon, title, description) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+
+    const values = [
+        entryid,
+        userid,
+        createdon,
+        entry.title,
+        entry.description,
+    ];
+
     try {
+        const newentry = await pool.query(addEntry, values);
+
         const result = Schema.validateEntry(req.body);
         if (result.error) {
             return res.status(400).json({
                 status: 400,
                 message: result.error.details[0].message,
             });
-        } else {
-            const entry = {
-                id: uuidv4(),
-                createdOn: new Date(),
-                title: req.body.title,
-                description: req.body.description,
-                userId: req.user.userId,
-            };
-            data.push(entry);
-            return res.status(200).json({
-                status: 200,
-                id: entry.id,
-                message: 'Entry successfully created',
-                createdOn: entry.createdOn,
-                title: entry.title,
-                description: entry.description,
-                userId: entry.userId,
-            });
         }
+        return res.status(201).json({
+            status: 201,
+            message: 'Entry successfully created',
+            data: newentry.rows[0],
+        });
     } catch (err) {
         console.log(err);
     }
 };
-
 const updateEntry = async (req, res) => {
     const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
     const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
