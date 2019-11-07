@@ -1,22 +1,35 @@
+/* eslint-disable prefer-const */
 import bcrypt from 'bcrypt';
-import uuidv4 from 'uuid/v4';
+// import uuidv4 from 'uuid/v4';
+import uuid from 'uuid';
 import Schema from '../helpers/inputFieldsValidation';
-import users from './userData';
 import userAuthToken from '../helpers/userAuthToken';
+import pool from '../config/config';
+import users from './userData';
 
 const userControllers = {};
 
 // create a user
 const createUser = async (req, res) => {
     try {
-        const user = users.find((c) => c.email === req.body.email);
-        if (user) {
+        const user1 = req.body;
+        const getEmail = 'SELECT * FROM users WHERE email=$1';
+        const userid = uuid.v4();
+        const values = [
+            userid,
+            user1.firstname,
+            user1.lastname,
+            user1.email,
+            user1.password,
+        ];
+        const registerUser = 'INSERT INTO users (userid, firstname, lastname, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+        const user = await pool.query(getEmail, [user1.email]);
+        if (user.rows[0]) {
             return res.status(409).json({
                 status: 409,
                 message: 'Email already exists',
             });
         } else {
-            // hash the password
             const passwordHash = await bcrypt.hash(req.body.password, 10);
 
             const userData = Schema.validateUserSignup(req.body);
@@ -26,31 +39,14 @@ const createUser = async (req, res) => {
                     message: userData.error.details[0].message,
                 });
             }
-            const newUser = {
-                userId: uuidv4(),
-                firstname: req.body.firstname,
-                lastname: req.body.lastname,
-                email: req.body.email,
-                password: passwordHash,
-            };
-            users.push(newUser);
-            const authenticate = {
-                userId: newUser.userId,
-                firstname: newUser.firstname,
-                lastname: newUser.lastname,
-                email: newUser.email,
-            };
-            const token = userAuthToken(authenticate);
-            return res.status(201).json({
-                status: 201,
-                message: 'User created successfully',
-                userId: newUser.userId,
-                firstname: newUser.firstname,
-                lastname: newUser.lastname,
-                email: newUser.email,
-                token,
-            });
         }
+        const newUser = await pool.query(registerUser, values);
+        const token = userAuthToken(newUser.rows[0]);
+        return res.status(201).json({
+            status: 201,
+            message: 'User created successfully',
+            token,
+        });
     } catch (err) {
         console.log(err);
     }
