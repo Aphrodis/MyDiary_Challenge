@@ -53,15 +53,19 @@ const createUser = async (req, res) => {
 };
 
 const signin = async (req, res) => {
+    const { email, password } = req.body;
     try {
-        const user = users.find((c) => c.email === req.body.email);
-        if (!user) {
+        const response = 'SELECT * FROM users WHERE email=$1';
+        const user = await pool.query(response, [email]);
+
+        if (!user.rows[0]) {
             return res.status(404).json({
                 status: 404,
                 message: 'Email not found',
             });
         }
-        const validPassword = await bcrypt.compare(req.body.password, users[0].password);
+        const validPassword = await bcrypt.compare(user.rows[0].password, req.body.password.trim());
+
         if (!validPassword) {
             return res.status(401).json({
                 status: 401,
@@ -75,13 +79,8 @@ const signin = async (req, res) => {
                 message: userSignInData.error.details[0].message,
             });
         }
-        const data = {
-            userId: users[0].userId,
-            firstname: users[0].firstname,
-            lastname: users[0].lastname,
-            email: users[0].email,
-        };
-        const token = userAuthToken(data);
+
+        const token = userAuthToken(user);
         return res.status(200).json({
             status: 200,
             message: 'User logged in successfully',
@@ -91,7 +90,6 @@ const signin = async (req, res) => {
         console.log(err);
     }
 };
-
 userControllers.createUser = createUser;
 userControllers.signin = signin;
 
