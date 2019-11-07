@@ -130,36 +130,44 @@ const updateEntry = async (req, res) => {
         console.log(err);
     }
 };
-
 const deleteEntry = async (req, res) => {
-    const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
-    const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
-    const singleEntry = allEntries.find((entryInfo) => entryInfo.id === req.params.id);
+    let {
+        title,
+        description,
+    } = req.body;
+    const { userid } = req.user.rows[0];
+    let { entryid } = req.params;
+
+    const getEntryById = 'SELECT * FROM entries WHERE entryid=$1';
+    const getEntryByUserId = 'SELECT * FROM entries WHERE userid=$1';
+    const entryById = await pool.query(getEntryById, [entryid]);
+    const entryByUserId = await pool.query(getEntryByUserId, [userid]);
+
     try {
-        if (!entry) {
+        if (!entryById.rows[0]) {
             return res.status(404).json({
                 status: 404,
-                message: `Can't find the entry with an id of ${req.params.id}`,
+                message: 'Requested entry was not found',
             });
-        } else if (!singleEntry) {
+        } else if (!entryByUserId.rows[0]) {
             return res.status(404).json({
                 status: 404,
                 message: 'You are not allowed to delete an entry that is not yours!',
             });
         } else {
-            const index = data.indexOf(singleEntry);
-            data.splice(index, 1);
+            const deleteEntryQuery = 'DELETE FROM entries WHERE entryid=$1 RETURNING *';
+            const deletedEntry = await pool.query(deleteEntryQuery, [entryid]);
+
             return res.status(200).json({
                 status: 200,
                 message: 'Entry successfully deleted',
-                singleEntry,
+                data: deletedEntry.rows[0],
             });
         }
     } catch (err) {
         console.log(err);
     }
 };
-
 entryControllers.getAllEntries = getAllEntries;
 entryControllers.getEntry = getEntry;
 entryControllers.createEntry = createEntry;
