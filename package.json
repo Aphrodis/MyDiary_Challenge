@@ -7,7 +7,7 @@
     "create": "babel-node ./server/db/createTables.js --exit",
     "drop": "babel-node ./server/db/dropTables.js --exit",
     "build": "babel server -d dist",
-    "test": "nyc mocha --require @babel/register ./server/tests --exit",
+    "test": "npm run drop && npm run create && nyc mocha --require @babel/register ./server/tests --exit",
     "dev": "nodemon --exec babel-node ./server/app.js",
     "start": "babel-node ./server/app.js",
     "coveralls": "nyc report --reporter=text-lcov | coveralls"
