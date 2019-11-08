@@ -56,7 +56,6 @@ const getEntry = async (req, res) => {
     const getEntryByUserId = 'SELECT * FROM entries WHERE userid=$1';
     const entryById = await pool.query(getEntryById, [entryid]);
     const entryByUserId = await pool.query(getEntryByUserId, [userid]);
-
     try {
         if (!entryById.rows[0]) {
             return res.status(404).json({
