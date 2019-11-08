@@ -1,11 +1,9 @@
 /* eslint-disable prefer-const */
 import bcrypt from 'bcrypt';
-// import uuidv4 from 'uuid/v4';
 import uuid from 'uuid';
 import Schema from '../helpers/inputFieldsValidation';
 import userAuthToken from '../helpers/userAuthToken';
 import pool from '../config/config';
-import users from './userData';
 
 const userControllers = {};
 
