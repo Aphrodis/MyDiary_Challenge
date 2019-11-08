@@ -8,10 +8,10 @@ entriesRouter.post('/api/v1/entries', accessToken, entryControllers.createEntry)
 
 entriesRouter.get('/api/v1/entries', accessToken, entryControllers.getAllEntries);
 
-entriesRouter.get('/api/v1/entries/:id', accessToken, entryControllers.getEntry);
+entriesRouter.get('/api/v1/entries/:entryid', accessToken, entryControllers.getEntry);
 
-entriesRouter.patch('/api/v1/entries/:id', accessToken, entryControllers.updateEntry);
+entriesRouter.patch('/api/v1/entries/:entryid', accessToken, entryControllers.updateEntry);
 
-entriesRouter.delete('/api/v1/entries/:id', accessToken, entryControllers.deleteEntry);
+entriesRouter.delete('/api/v1/entries/:entryid', accessToken, entryControllers.deleteEntry);
 
 export default entriesRouter;

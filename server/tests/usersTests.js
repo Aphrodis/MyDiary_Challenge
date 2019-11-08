@@ -21,17 +21,24 @@ describe('User wants to signup', () => {
                 done();
             });
     });
-
-    it('should create a user and allow them to sign in', (done) => {
+    it('should create a new user and generate token', (done) => {
+        const newUser = {
+            firstname: 'Aphrodicee',
+            lastname: 'Izabayo',
+            email: 'aphrodice203939@gmail.com',
+            password: 'password1',
+        };
         chai
             .request(app)
             .post('/api/v1/auth/signup')
-            .send(userInput.validSignUp)
+            .send(newUser)
             .end((err, res) => {
                 if (err) done(err);
                 token = res.body.token;
                 expect(res.status).to.equal(201);
+                expect(res.body).to.have.property('token');
                 expect(res.body).to.have.property('message').equal('User created successfully');
+                token = res.body.token;
                 done();
             });
     });
@@ -55,9 +62,9 @@ describe('User wants to signup', () => {
 describe('User tries to sign into his/her account', () => {
     before('Create a user', (done) => {
         const user = {
-            firstname: 'Aphrodice1',
+            firstname: 'Aphrodice',
             lastname: 'Izabayo0',
-            email: 'izabayoaphrodicde@gmail.com',
+            email: 'izabayoaphrodice11895@gmail.com',
             password: 'thisismeheree',
         };
         chai
@@ -92,22 +99,6 @@ describe('User tries to sign into his/her account', () => {
                 if (err) done(err);
                 expect(res).to.have.status(401);
                 expect(res.body).to.have.property('message').equal('Incorrect password');
-                done();
-            });
-    });
-    it('should allow the user to enter into account and perform action', (done) => {
-        const signin = {
-            email: 'izabayoaphrodice@gmail.com',
-            password: 'thisismeheree',
-        };
-        chai
-            .request(app)
-            .post('/api/v1/auth/signin')
-            .send(signin)
-            .end((err, res) => {
-                if (err) done(err);
-                expect(res).to.have.status(200);
-                expect(res.body).to.have.property('token');
                 done();
             });
     });

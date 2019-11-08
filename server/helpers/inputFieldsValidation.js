@@ -2,17 +2,13 @@ import Joi from 'joi';
 
 const validateEntry = (entry) => {
     const entrySchema = Joi.object({
-        id: Joi
+        entryid: Joi
             .string(),
         title: Joi
-            .string()
-            .min(3)
-            .required(),
+            .any(),
         description: Joi
-            .string()
-            .min(5)
-            .required(),
-    });
+            .any(),
+    }).or('title', 'description');
     return Joi.validate(entry, entrySchema);
 };
 

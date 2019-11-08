@@ -3,7 +3,7 @@ const userInput = {};
 const validSignUp = {
     firstname: 'Aphrodice',
     lastname: 'Izabayo',
-    email: 'izabayoaphrodis@gmail.com',
+    email: 'izabayoaphrodisce@gmail.com',
     password: 'thisismehere',
 };
 
