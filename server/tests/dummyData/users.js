@@ -21,7 +21,7 @@ const invalidSignUp = {
 const emailExists = {
     firstname: 'Aphrodice',
     lastname: 'lastname',
-    email: 'izabayoaphrodis@gmail.com',
+    email: 'aphrodice203939@gmail.com',
     password: 'anotherpassword',
 };
 const wrongUser = {

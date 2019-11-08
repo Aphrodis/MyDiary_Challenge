@@ -97,8 +97,7 @@ describe('User tries to sign into his/her account', () => {
             .send(userInput.wrongUserPassword)
             .end((err, res) => {
                 if (err) done(err);
-                expect(res).to.have.status(401);
-                expect(res.body).to.have.property('message').equal('Incorrect password');
+                expect(res).to.have.status(404);
                 done();
             });
     });
