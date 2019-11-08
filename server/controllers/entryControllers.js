@@ -2,40 +2,68 @@
 /* eslint-disable radix */
 import uuid from 'uuid';
 import Schema from '../helpers/inputFieldsValidation';
-import data from './diaryData';
+// import data from './diaryData';
 import pool from '../config/config';
 
 const entryControllers = {};
 
 const getAllEntries = async (req, res) => {
-    const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
+    // const { userid } = req.user.rows[0];
+    const { userid } = req.authorizedUser;
+    const allEntries = 'SELECT * FROM entries WHERE userid=$1;';
+    const entries = await pool.query(allEntries, [userid]);
     try {
+        const pageNo = req.query.pageNo ? parseInt(req.query.pageNo) : 1;
+
+        const pageSize = req.query.pageSize ? parseInt(req.query.pageSize) : 10;
+        const startIndex = (pageNo - 1) * pageSize;
+        const endIndex = pageSize * pageNo;
+
+        const totalEntries = entries.rows.length;
+        const totalPages = Math.ceil(totalEntries / pageSize);
+        let retrievedEntries = entries.rows.slice(startIndex, endIndex);
+
+        const itemsOnPage = retrievedEntries.length;
+
+
         if (allEntries.length === 0) {
             return res.status(404).json({
                 status: 404,
                 message: 'You have not yet added any entry!',
             });
         }
+
         res.status(200).json({
             status: 200,
             message: 'Entries retrieved successfully',
-            allEntries,
+            totalEntries,
+            totalPages,
+            itemsOnPage,
+            pageNo,
+            retrievedEntries,
         });
     } catch (err) {
         console.log(err);
     }
 };
+
 const getEntry = async (req, res) => {
-    const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
-    const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
-    const singleEntry = allEntries.find((entryInfo) => entryInfo.id === req.params.id);
+    // const { userid } = req.user.rows[0];
+    const { userid } = req.authorizedUser;
+    let { entryid } = req.params;
+
+    const getEntryById = 'SELECT * FROM entries WHERE entryid=$1';
+    const getEntryByUserId = 'SELECT * FROM entries WHERE userid=$1';
+    const entryById = await pool.query(getEntryById, [entryid]);
+    const entryByUserId = await pool.query(getEntryByUserId, [userid]);
+
     try {
-        if (!entry) {
+        if (!entryById.rows[0]) {
             return res.status(404).json({
                 status: 404,
-                message: `Entry with an id of ${req.params.id} was not found`,
+                message: 'Entry not found!!',
             });
-        } else if (!singleEntry) {
+        } else if (!entryByUserId.rows[0]) {
             return res.status(404).json({
                 status: 404,
                 message: 'You are not allowed to view an entry that is not yours!',
@@ -44,7 +72,7 @@ const getEntry = async (req, res) => {
             return res.status(200).json({
                 status: 200,
                 message: 'Entry retrieved successfully',
-                singleEntry,
+                retrievedEntry: entryById.rows[0],
             });
         }
     } catch (err) {
@@ -54,27 +82,27 @@ const getEntry = async (req, res) => {
 
 
 const createEntry = async (req, res) => {
-    const { userid } = req.user.rows[0];
-
-    const entryid = uuid.v4();
-    const entry = req.body;
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    const createdon = `${day}/${month}/${year}`;
-
-    const addEntry = 'INSERT INTO entries (entryid, userid, createdon, title, description) VALUES ($1, $2, $3, $4, $5) RETURNING *';
-
-    const values = [
-        entryid,
-        userid,
-        createdon,
-        entry.title,
-        entry.description,
-    ];
-
     try {
+        // const { userid } = req.user.rows[0];
+        const { userid } = req.authorizedUser;
+
+        const entryid = uuid.v4();
+        const entry = req.body;
+        const date = new Date();
+        const day = date.getDate();
+        const month = date.getMonth();
+        const year = date.getFullYear();
+        const createdon = `${day}/${month}/${year}`;
+
+        const addEntry = 'INSERT INTO entries (entryid, userid, createdon, title, description) VALUES ($1, $2, $3, $4, $5) RETURNING *';
+
+        const values = [
+            entryid,
+            userid,
+            createdon,
+            entry.title,
+            entry.description,
+        ];
         const newentry = await pool.query(addEntry, values);
 
         const result = Schema.validateEntry(req.body);
@@ -94,16 +122,21 @@ const createEntry = async (req, res) => {
     }
 };
 const updateEntry = async (req, res) => {
-    const allEntries = data.filter((entryInfo) => entryInfo.userId === req.user.userId);
-    const entry = data.find((entryInfo) => entryInfo.id === req.params.id);
-    const singleEntry = allEntries.find((entryInfo) => entryInfo.id === req.params.id);
+    // const { userid } = req.user.rows[0];
+    const { userid } = req.authorizedUser;
+    let { entryid } = req.params;
+
+    const getEntryById = 'SELECT * FROM entries WHERE entryid=$1';
+    const getEntryByUserId = 'SELECT * FROM entries WHERE userid=$1';
+    const entryById = await pool.query(getEntryById, [entryid]);
+    const entryByUserId = await pool.query(getEntryByUserId, [userid]);
     try {
-        if (!entry) {
+        if (!entryById.rows[0]) {
             return res.status(404).json({
                 status: 404,
-                message: `Sorry, Entry with an id of ${req.params.id} was not found`,
+                message: 'Entry was not found',
             });
-        } else if (!singleEntry) {
+        } else if (!entryByUserId.rows[0]) {
             return res.status(404).json({
                 status: 404,
                 message: 'You are not allowed to update an entry that is not yours!',
@@ -116,13 +149,19 @@ const updateEntry = async (req, res) => {
                     message: result.error.details[0].message,
                 });
             } else {
-                singleEntry.title = req.body.title || singleEntry.title;
-                singleEntry.description = req.body.description || singleEntry.description;
-
+                const updateOneEntry = `UPDATE entries
+                SET title=$1,description=$2 WHERE entryid=$3 RETURNING *`;
+                const values = [
+                    req.body.title || entryById.rows[0].title,
+                    req.body.description || entryById.rows[0].description,
+                    entryById.rows[0].entryid,
+                ];
+                const editedEntry = await pool.query(updateOneEntry, values);
+                const updatedEntry = editedEntry.rows[0];
                 return res.status(200).json({
                     status: 200,
                     message: 'Entry successfully edited',
-                    singleEntry,
+                    updatedEntry,
                 });
             }
         }
@@ -131,11 +170,7 @@ const updateEntry = async (req, res) => {
     }
 };
 const deleteEntry = async (req, res) => {
-    let {
-        title,
-        description,
-    } = req.body;
-    const { userid } = req.user.rows[0];
+    const { userid } = req.authorizedUser;
     let { entryid } = req.params;
 
     const getEntryById = 'SELECT * FROM entries WHERE entryid=$1';

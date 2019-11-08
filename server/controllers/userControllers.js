@@ -64,7 +64,7 @@ const signin = async (req, res) => {
                 message: 'Email not found',
             });
         }
-        const validPassword = await bcrypt.compare(user.rows[0].password, req.body.password.trim());
+        const validPassword = await bcrypt.compare(req.body.password.trim(), user.rows[0].password);
 
         if (!validPassword) {
             return res.status(401).json({
