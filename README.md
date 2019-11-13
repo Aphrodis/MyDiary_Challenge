@@ -34,7 +34,7 @@ MyDiary is an online journal where users can pen down their thoughts and feeling
 - Users can set and get daily notifications that prompt them to add an entry to their diary.
 
 ## UI templates
-The UI templates can be accessed at: *https://aphrodis.github.io/MyDiary_Challenge/UI/*
+The UI templates can be accessed at: *https://aphrodis.github.io/MyDiary_Challenge/UI/html/landing1.html*
 
 ## API Endpoints
 | Endpoint | Method   | Functionality| 
