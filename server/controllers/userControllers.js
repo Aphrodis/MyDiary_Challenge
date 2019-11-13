@@ -13,13 +13,16 @@ const createUser = async (req, res) => {
         const user1 = req.body;
         const getEmail = 'SELECT * FROM users WHERE email=$1';
         const userid = uuid.v4();
+        // console.log(req.body.password);
+        const passwordHash = await bcrypt.hash(req.body.password, 10);
         const values = [
             userid,
             user1.firstname,
             user1.lastname,
             user1.email,
-            user1.password,
+            passwordHash,
         ];
+        // console.log(passwordHash, 'then', user1.password);
         const registerUser = 'INSERT INTO users (userid, firstname, lastname, email, password) VALUES ($1, $2, $3, $4, $5) RETURNING *';
         const user = await pool.query(getEmail, [user1.email]);
         if (user.rows[0]) {
@@ -28,8 +31,6 @@ const createUser = async (req, res) => {
                 message: 'Email already exists',
             });
         } else {
-            const passwordHash = await bcrypt.hash(req.body.password, 10);
-
             const userData = Schema.validateUserSignup(req.body);
             if (userData.error) {
                 return res.status(400).json({
@@ -39,7 +40,11 @@ const createUser = async (req, res) => {
             }
         }
         const newUser = await pool.query(registerUser, values);
-        const token = userAuthToken(newUser.rows[0]);
+        const signupToken = {
+            email: newUser.rows[0].email,
+            userid: newUser.rows[0].userid,
+        };
+        const token = userAuthToken(signupToken);
         return res.status(201).json({
             status: 201,
             message: 'User created successfully',
@@ -62,7 +67,7 @@ const signin = async (req, res) => {
                 message: 'Email not found',
             });
         }
-        const validPassword = await bcrypt.compare(req.body.password.trim(), user.rows[0].password);
+        const validPassword = await bcrypt.compare(password, user.rows[0].password);
 
         if (!validPassword) {
             return res.status(401).json({
@@ -77,12 +82,15 @@ const signin = async (req, res) => {
                 message: userSignInData.error.details[0].message,
             });
         }
-
-        const token = userAuthToken(user);
+        const signinToken = {
+            email: user.rows[0].email,
+            userid: user.rows[0].userid,
+        };
+        const mytoken = userAuthToken(signinToken);
         return res.status(200).json({
             status: 200,
             message: 'User logged in successfully',
-            token,
+            mytoken,
         });
     } catch (err) {
         console.log(err);

@@ -29,7 +29,7 @@ const validateUserSignup = (user) => {
             .required(),
         password: Joi
             .string()
-            .regex(/^[a-zA-Z0-9]{8,32}$/)
+            .regex(/^[a-zA-Z0-9]{2,32}$/)
             .required(),
     });
     return Joi.validate(user, userSchema);

@@ -15,4 +15,4 @@ const dropTables = async () => {
     }
 };
 dropTables();
-require('make-runnable');
+// require('make-runnable');

@@ -6,13 +6,13 @@ const allTables = `DROP TABLE IF EXISTS users, entries CASCADE;
     firstname VARCHAR NOT NULL,
     lastname VARCHAR NOT NULL,
     email VARCHAR NOT NULL UNIQUE,
-    password VARCHAR(56) NOT NULL
+    password VARCHAR NOT NULL
       
     );
     CREATE TABLE entries (
         entryid UUID PRIMARY KEY,
         userid VARCHAR NOT NULL,
-        createdon TIMESTAMP NOT NULL,
+        createdon TIMESTAMP DEFAULT NOW(),
         title TEXT,
         description TEXT
     ); `;
@@ -26,4 +26,4 @@ const createTables = async () => {
 };
 createTables();
 
-require('make-runnable');
+// require('make-runnable');

@@ -14,8 +14,7 @@ const { expect } = chai;
 let cachedEntry = '';
 // eslint-disable-next-line no-undef
 // const token = req.headers.authorization.split(' ')[1];
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOiI2YzRjNWVkNi01MjVhLTRkMDQtOWM0NS0xN2FlOGE4MTkwYWIiLCJmaXJzdG5hbWUiOiJBcGhyb2RpY2UiLCJsYXN0bmFtZSI6Ikl6YWJheW8iLCJlbWFpbCI6ImFwaHJvZGljZWQyQGtlcGxlci5vcmciLCJwYXNzd29yZCI6InBhc3N3b3JkMSIsImlhdCI6MTU3MzE3MDEwOCwiZXhwIjoxNTczMjU2NTA4fQ.VgeGG_ZjhL9KaYakG8Zr9DdgGvXea7R_ZnX-zjSY__k';
-
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFwaHJvZGljZGRkZUBnLmNvbSIsInVzZXJpZCI6ImZiODFjMzgzLWU3MWQtNGM4ZC1iMmFjLTM2NWQ1ZDI1NTcyNyIsImlhdCI6MTU3MzY3MTEyMiwiZXhwIjoxNTczNzU3NTIyfQ.Sg_DD4t8HyfXVyEzrhnNYzubtXO5c1oZERiCopuDPzo';
 // POST /api/v1/entries
 describe('User wants to create a new entry', () => {
     it('should return error due to not having access token', (done) => {

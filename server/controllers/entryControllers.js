@@ -88,11 +88,12 @@ const createEntry = async (req, res) => {
 
         const entryid = uuid.v4();
         const entry = req.body;
-        const date = new Date();
-        const day = date.getDate();
-        const month = date.getMonth();
-        const year = date.getFullYear();
-        const createdon = `${day}/${month}/${year}`;
+        // const date = new Date();
+        // const day = date.getDate();
+        // const month = date.getMonth();
+        // const year = date.getFullYear();
+        // const createdon = `${day}/${month}/${year}`;
+        const createdon = new Date();
 
         const addEntry = 'INSERT INTO entries (entryid, userid, createdon, title, description) VALUES ($1, $2, $3, $4, $5) RETURNING *';
 
