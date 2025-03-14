@@ -24,7 +24,7 @@
   "homepage": "https://github.com/Aphrodis/MyDiary_Challenge#readme",
   "dependencies": {
     "@babel/cli": "^7.6.4",
-    "@babel/core": "^7.6.4",
+    "@babel/core": "^7.26.10",
     "@babel/node": "^7.6.3",
     "@babel/plugin-transform-runtime": "^7.6.2",
     "@babel/preset-env": "^7.6.3",
